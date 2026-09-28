@@ -1,0 +1,237 @@
+/* =========================================================
+   ANAND SWEETS RAJAHMUNDRY - TRADITIONAL TELUGU STYLES
+========================================================= */
+
+:root {
+  --maroon: #5e0f1a;
+  --dark-maroon: #3d0810;
+  --gold: #d4a017;
+  --light-gold: #f1cf68;
+  --cream: #fff8e8;
+  --soft-cream: #fff5df;
+  --beige: #f4ead2;
+  --white: #ffffff;
+  --text-dark: #2d2020;
+  --text-muted: #746565;
+  --green-whatsapp: #25d366;
+  --shadow-sm: 0 4px 12px rgba(63, 18, 18, 0.08);
+  --shadow-md: 0 10px 30px rgba(63, 18, 18, 0.12);
+  --shadow-lg: 0 20px 45px rgba(63, 18, 18, 0.18);
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
+  --radius-pill: 50px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--cream);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  /* Traditional Subtle Rangoli Texture Pattern */
+  background-image: radial-gradient(rgba(212, 160, 23, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: var(--maroon);
+}
+
+.telugu-font {
+  font-family: 'Tiro Telugu', serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--maroon);
+}
+
+/* Container & Sections */
+.container {
+  width: min(1180px, 92%);
+  margin: 0 auto;
+}
+
+.section {
+  padding: 65px 0;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 45px 0;
+  }
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-subtitle {
+  display: inline-block;
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.section-title h2 {
+  font-size: clamp(28px, 3.8vw, 42px);
+  color: var(--maroon);
+  line-height: 1.2;
+}
+
+.section-title p {
+  max-width: 600px;
+  margin: 10px auto 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* Traditional Gold Royal Mandap Card Border */
+.traditional-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(94, 15, 26, 0.12);
+  box-shadow: 0 8px 25px rgba(63, 18, 18, 0.06);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.traditional-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 35px rgba(63, 18, 18, 0.14);
+}
+
+.traditional-card::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: 6px;
+  bottom: 6px;
+  border: 1px solid rgba(212, 160, 23, 0.25);
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: none;
+  outline: none;
+  text-decoration: none;
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold), #b8860b);
+  color: var(--dark-maroon);
+  box-shadow: 0 6px 20px rgba(212, 160, 23, 0.35);
+  border: 1px solid #f1cf68;
+}
+
+.btn-gold:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(212, 160, 23, 0.5);
+  background: linear-gradient(135deg, #e5b225, var(--gold));
+}
+
+.btn-maroon {
+  background: linear-gradient(135deg, var(--maroon), var(--dark-maroon));
+  color: var(--gold);
+  box-shadow: 0 6px 20px rgba(94, 15, 26, 0.3);
+  border: 1px solid var(--gold);
+}
+
+.btn-maroon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(94, 15, 26, 0.45);
+}
+
+.btn-outline {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.btn-outline:hover {
+  background: var(--white);
+  color: var(--maroon);
+}
+
+.btn-whatsapp {
+  background: var(--green-whatsapp);
+  color: white;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+}
+
+.btn-whatsapp:hover {
+  background: #20ba5a;
+  transform: translateY(-3px);
+}
+
+/* Telugu Maroon Banner Style */
+.telugu-maroon-banner {
+  background: linear-gradient(135deg, #5e0f1a, #3d0810);
+  color: #ffffff;
+  padding: 50px 24px;
+  border-radius: 24px;
+  margin: 40px auto;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(63, 18, 18, 0.25);
+  border: 2px solid #d4a017;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.35s ease forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2.2s infinite ease-in-out;
+}
