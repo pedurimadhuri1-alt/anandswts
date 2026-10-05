@@ -16,13 +16,6 @@ export default function CheckoutModal({ isOpen, onClose, cartItems, onClearCart 
   const [orderConfirmed, setOrderConfirmed] = useState(false);
   const [orderId, setOrderId] = useState('');
 
-  const subtotal = cartItems.reduce((total, item) => {
-    const itemPrice = Math.round(item.sweet.pricePerKg * item.weight.multiplier);
-    return total + itemPrice * item.quantity;
-  }, 0);
-  const packagingFee = subtotal > 0 ? 30 : 0;
-  const grandTotal = subtotal + packagingFee;
-
   const handlePlaceOrder = (e) => {
     e.preventDefault();
     const generatedId = `ANS-${Math.floor(100000 + Math.random() * 900000)}`;
@@ -43,21 +36,21 @@ export default function CheckoutModal({ isOpen, onClose, cartItems, onClearCart 
       position: 'fixed',
       inset: 0,
       zIndex: 1100,
-      background: 'rgba(38, 5, 9, 0.8)',
+      background: 'rgba(36, 31, 26, 0.8)',
       backdropFilter: 'blur(8px)',
       display: 'grid',
       placeItems: 'center',
       padding: '20px'
     }} onClick={onClose}>
       <div style={{
-        background: '#fffbeb',
+        background: '#FFFDF8',
         borderRadius: '24px',
         maxWidth: '580px',
         width: '100%',
         maxHeight: '90vh',
         overflowY: 'auto',
         padding: '32px',
-        border: '2px solid #d4a017',
+        border: '2px solid #B49A54',
         boxShadow: '0 25px 50px rgba(0,0,0,0.3)',
         position: 'relative'
       }} onClick={(e) => e.stopPropagation()}>
@@ -67,8 +60,8 @@ export default function CheckoutModal({ isOpen, onClose, cartItems, onClearCart 
             position: 'absolute',
             top: '16px',
             right: '16px',
-            background: '#5e0f1a',
-            color: '#d4a017',
+            background: '#332D25',
+            color: '#B49A54',
             border: 'none',
             borderRadius: '50%',
             width: '32px',
@@ -87,7 +80,7 @@ export default function CheckoutModal({ isOpen, onClose, cartItems, onClearCart 
               width: '70px',
               height: '70px',
               borderRadius: '50%',
-              background: 'linear-gradient(135deg, #27ae60, #2ecc71)',
+              background: 'linear-gradient(135deg, #B49A54, #B49A54)',
               color: '#ffffff',
               display: 'grid',
               placeItems: 'center',
@@ -101,57 +94,52 @@ export default function CheckoutModal({ isOpen, onClose, cartItems, onClearCart 
               Order Placed Successfully!
             </span>
 
-            <h2 style={{ fontSize: '24px', color: '#5e0f1a', margin: '8px 0' }}>
+            <h2 style={{ fontSize: '24px', color: '#332D25', margin: '8px 0' }}>
               Thank You For Your Order
             </h2>
-            <p style={{ color: '#746565', fontSize: '14px', marginBottom: '20px' }}>
-              Order Reference ID: <strong style={{ color: '#5e0f1a' }}>#{orderId}</strong>
+            <p style={{ color: '#6B6255', fontSize: '14px', marginBottom: '20px' }}>
+              Order Reference ID: <strong style={{ color: '#332D25' }}>#{orderId}</strong>
             </p>
 
             <div style={{
               background: '#ffffff',
               padding: '20px',
               borderRadius: '16px',
-              border: '1px solid rgba(94, 15, 26, 0.1)',
+              border: '1px solid rgba(51, 45, 37, 0.1)',
               textAlign: 'left',
               marginBottom: '24px',
               fontSize: '13px'
             }}>
-              <div style={{ fontWeight: 700, color: '#5e0f1a', marginBottom: '8px', borderBottom: '1px solid #eee', paddingBottom: '6px' }}>
+              <div style={{ fontWeight: 700, color: '#332D25', marginBottom: '8px', borderBottom: '1px solid #F5F0E2', paddingBottom: '6px' }}>
                 Delivery Summary:
               </div>
-              <div style={{ color: '#2d2020' }}>Customer: <strong>{formData.fullName}</strong></div>
-              <div style={{ color: '#2d2020' }}>Phone: <strong>{formData.phone}</strong></div>
-              <div style={{ color: '#2d2020' }}>Address: <strong>{formData.address}, Rajahmundry</strong></div>
-              <div style={{ color: '#5e0f1a', fontWeight: 800, fontSize: '15px', marginTop: '10px' }}>
-                Total Paid: ₹{grandTotal} ({formData.paymentMethod === 'cod' ? 'Cash On Delivery' : 'UPI Payment'})
-              </div>
+              <div style={{ color: '#332D25' }}>Customer: <strong>{formData.fullName}</strong></div>
+              <div style={{ color: '#332D25' }}>Phone: <strong>{formData.phone}</strong></div>
+              <div style={{ color: '#332D25' }}>Address: <strong>{formData.address}, Rajahmundry</strong></div>
             </div>
 
-            <button onClick={onClose} className="btn btn-maroon" style={{ width: '100%' }}>
+            <button onClick={onClose} className="btn btn-primary" style={{ width: '100%' }}>
               Back To Anand Sweets Store
             </button>
           </div>
         ) : (
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-              <Truck size={24} style={{ color: '#5e0f1a' }} />
-              <h2 style={{ fontSize: '22px', color: '#5e0f1a', margin: 0 }}>
+              <Truck size={24} style={{ color: '#332D25' }} />
+              <h2 style={{ fontSize: '22px', color: '#332D25', margin: 0 }}>
                 Checkout & Delivery Address
               </h2>
             </div>
 
-            {/* Order Brief */}
-            <div style={{ background: '#fff7df', padding: '14px 18px', borderRadius: '14px', marginBottom: '20px', border: '1px solid rgba(94, 15, 26, 0.1)' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 700, color: '#5e0f1a', fontSize: '14px' }}>
-                <span>Order Total ({cartItems.length} items):</span>
-                <span>₹{grandTotal}</span>
+            <div style={{ background: '#FFFDF8', padding: '14px 18px', borderRadius: '14px', marginBottom: '20px', border: '1px solid rgba(51, 45, 37, 0.1)' }}>
+              <div style={{ fontWeight: 700, color: '#332D25', fontSize: '14px' }}>
+                {cartItems.length} item(s) selected for delivery.
               </div>
             </div>
 
             <form onSubmit={handlePlaceOrder} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
               <div>
-                <label style={{ fontSize: '12px', fontWeight: 700, color: '#5e0f1a', display: 'block', marginBottom: '4px' }}>
+                <label style={{ fontSize: '12px', fontWeight: 700, color: '#332D25', display: 'block', marginBottom: '4px' }}>
                   Full Name:
                 </label>
                 <input
@@ -160,12 +148,12 @@ export default function CheckoutModal({ isOpen, onClose, cartItems, onClearCart 
                   placeholder="E.g., K. V. Satyanarayana"
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                  style={{ width: '100%', padding: '10px 14px', borderRadius: '10px', border: '1px solid rgba(94, 15, 26, 0.2)', fontFamily: 'inherit' }}
+                  style={{ width: '100%', padding: '10px 14px', borderRadius: '10px', border: '1px solid rgba(51, 45, 37, 0.2)', fontFamily: 'inherit' }}
                 />
               </div>
 
               <div>
-                <label style={{ fontSize: '12px', fontWeight: 700, color: '#5e0f1a', display: 'block', marginBottom: '4px' }}>
+                <label style={{ fontSize: '12px', fontWeight: 700, color: '#332D25', display: 'block', marginBottom: '4px' }}>
                   Phone Number:
                 </label>
                 <input
@@ -174,12 +162,12 @@ export default function CheckoutModal({ isOpen, onClose, cartItems, onClearCart 
                   placeholder="+91 93466 92862"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  style={{ width: '100%', padding: '10px 14px', borderRadius: '10px', border: '1px solid rgba(94, 15, 26, 0.2)', fontFamily: 'inherit' }}
+                  style={{ width: '100%', padding: '10px 14px', borderRadius: '10px', border: '1px solid rgba(51, 45, 37, 0.2)', fontFamily: 'inherit' }}
                 />
               </div>
 
               <div>
-                <label style={{ fontSize: '12px', fontWeight: 700, color: '#5e0f1a', display: 'block', marginBottom: '4px' }}>
+                <label style={{ fontSize: '12px', fontWeight: 700, color: '#332D25', display: 'block', marginBottom: '4px' }}>
                   Delivery Address:
                 </label>
                 <textarea
@@ -188,12 +176,12 @@ export default function CheckoutModal({ isOpen, onClose, cartItems, onClearCart 
                   placeholder="House No, Street Name, Rajahmundry Area..."
                   value={formData.address}
                   onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                  style={{ width: '100%', padding: '10px 14px', borderRadius: '10px', border: '1px solid rgba(94, 15, 26, 0.2)', fontFamily: 'inherit', resize: 'none' }}
+                  style={{ width: '100%', padding: '10px 14px', borderRadius: '10px', border: '1px solid rgba(51, 45, 37, 0.2)', fontFamily: 'inherit', resize: 'none' }}
                 />
               </div>
 
               <div>
-                <label style={{ fontSize: '12px', fontWeight: 700, color: '#5e0f1a', display: 'block', marginBottom: '6px' }}>
+                <label style={{ fontSize: '12px', fontWeight: 700, color: '#332D25', display: 'block', marginBottom: '6px' }}>
                   Payment Method:
                 </label>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
@@ -203,9 +191,9 @@ export default function CheckoutModal({ isOpen, onClose, cartItems, onClearCart 
                     style={{
                       padding: '12px',
                       borderRadius: '12px',
-                      border: formData.paymentMethod === 'cod' ? '2px solid #5e0f1a' : '1px solid rgba(94, 15, 26, 0.2)',
-                      background: formData.paymentMethod === 'cod' ? '#5e0f1a' : '#ffffff',
-                      color: formData.paymentMethod === 'cod' ? '#d4a017' : '#2d2020',
+                      border: formData.paymentMethod === 'cod' ? '2px solid #332D25' : '1px solid rgba(51, 45, 37, 0.2)',
+                      background: formData.paymentMethod === 'cod' ? '#332D25' : '#ffffff',
+                      color: formData.paymentMethod === 'cod' ? '#B49A54' : '#332D25',
                       fontWeight: 700,
                       fontSize: '13px',
                       cursor: 'pointer',
@@ -224,9 +212,9 @@ export default function CheckoutModal({ isOpen, onClose, cartItems, onClearCart 
                     style={{
                       padding: '12px',
                       borderRadius: '12px',
-                      border: formData.paymentMethod === 'upi' ? '2px solid #5e0f1a' : '1px solid rgba(94, 15, 26, 0.2)',
-                      background: formData.paymentMethod === 'upi' ? '#5e0f1a' : '#ffffff',
-                      color: formData.paymentMethod === 'upi' ? '#d4a017' : '#2d2020',
+                      border: formData.paymentMethod === 'upi' ? '2px solid #332D25' : '1px solid rgba(51, 45, 37, 0.2)',
+                      background: formData.paymentMethod === 'upi' ? '#332D25' : '#ffffff',
+                      color: formData.paymentMethod === 'upi' ? '#B49A54' : '#332D25',
                       fontWeight: 700,
                       fontSize: '13px',
                       cursor: 'pointer',
@@ -242,7 +230,7 @@ export default function CheckoutModal({ isOpen, onClose, cartItems, onClearCart 
               </div>
 
               <button type="submit" className="btn btn-gold" style={{ marginTop: '10px', padding: '14px' }}>
-                <Sparkles size={18} /> Confirm & Place Order (₹{grandTotal})
+                <Sparkles size={18} /> Confirm & Place Order
               </button>
             </form>
           </div>

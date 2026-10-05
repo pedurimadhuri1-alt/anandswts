@@ -1,129 +1,27 @@
 /* =========================================================
-   ANAND SWEETS RAJAHMUNDRY
-   RESPONSIVE CSS
+   ANAND SWEETS RAJAHMUNDRY — BASE RESET
+   Premium palette: Antique Gold + Ivory + Warm Brown
 ========================================================= */
 
-:root {
-  --maroon: #5e0f1a;
-  --dark-maroon: #3d0810;
-  --gold: #d4a017;
-  --light-gold: #f1cf68;
-  --cream: #fff8e8;
-  --soft-cream: #fff5df;
-  --beige: #f4ead2;
-  --white: #ffffff;
-  --text-dark: #2d2020;
-  --text-muted: #746565;
-  --green-whatsapp: #25d366;
-
-  --shadow-sm: 0 4px 12px rgba(63, 18, 18, 0.08);
-  --shadow-md: 0 10px 30px rgba(63, 18, 18, 0.12);
-  --shadow-lg: 0 20px 45px rgba(63, 18, 18, 0.18);
-
-  --radius-sm: 10px;
-  --radius-md: 18px;
-  --radius-lg: 26px;
-  --radius-pill: 50px;
-}
-
-
-/* =========================================================
-   GLOBAL RESET
-========================================================= */
-
-*,
-*::before,
-*::after {
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
 body {
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-  margin: 0;
-
-  font-family: "Poppins", sans-serif;
-  background-color: var(--cream);
-  color: var(--text-dark);
-
-  line-height: 1.6;
-  overflow-x: hidden;
-
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #241f1a;
+  background: #fffdf8;
   -webkit-font-smoothing: antialiased;
-
-  background-image: radial-gradient(
-    rgba(212, 160, 23, 0.08) 1px,
-    transparent 1px
-  );
-
-  background-size: 24px 24px;
-}
-
-#root {
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
   overflow-x: hidden;
 }
-
-
-/* =========================================================
-   BASIC ELEMENTS
-========================================================= */
-
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-video {
-  max-width: 100%;
-  height: auto;
-}
-
-svg {
-  max-width: 100%;
-}
-
-button,
-input,
-textarea,
-select {
-  font-family: inherit;
-  max-width: 100%;
-}
-
-button {
-  cursor: pointer;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-
-/* =========================================================
-   HEADINGS
-========================================================= */
 
 h1,
 h2,
@@ -131,310 +29,154 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0;
-  font-weight: 700;
-  color: var(--maroon);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 600;
+  color: #241f1a;
 }
 
-p {
-  margin: 0;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-.telugu-font {
-  font-family: "Tiro Telugu", serif;
+button {
+  font-family: inherit;
+  cursor: pointer;
 }
 
-
-/* =========================================================
-   SCROLLBAR
-========================================================= */
-
-::-webkit-scrollbar {
-  width: 9px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--cream);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--gold);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--maroon);
-}
-
-
-/* =========================================================
-   CONTAINER
-========================================================= */
-
-.container {
-  width: min(1180px, calc(100% - 40px));
-  max-width: 1180px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-/* =========================================================
-   SECTIONS
-========================================================= */
-
-.section {
-  width: 100%;
-  padding: 65px 0;
-  position: relative;
-}
-
-
-/* =========================================================
-   SECTION TITLE
-========================================================= */
-
-.section-title {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.section-subtitle {
-  display: inline-block;
-
-  color: var(--gold);
-
-  font-size: 13px;
-  font-weight: 700;
-
-  letter-spacing: 2px;
-  text-transform: uppercase;
-
-  margin-bottom: 6px;
-}
-
-.section-title h2 {
-  color: var(--maroon);
-  font-size: clamp(28px, 3.8vw, 42px);
-  line-height: 1.2;
-}
-
-.section-title p {
-  width: 100%;
-  max-width: 600px;
-
-  margin: 10px auto 0;
-
-  color: var(--text-muted);
-  font-size: 14px;
-}
-
-
-/* =========================================================
-   CARDS
-========================================================= */
-
-.traditional-card {
-  width: 100%;
-  max-width: 100%;
-
-  background: var(--white);
-
-  border-radius: 20px;
-  border: 1px solid rgba(94, 15, 26, 0.12);
-
-  box-shadow: var(--shadow-sm);
-
-  position: relative;
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-
-  overflow: hidden;
-}
-
-.traditional-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-md);
-}
-
-.traditional-card::after {
-  content: "";
-
-  position: absolute;
-
-  top: 6px;
-  right: 6px;
-  bottom: 6px;
-  left: 6px;
-
-  border: 1px solid rgba(212, 160, 23, 0.25);
-
-  border-radius: 16px;
-
-  pointer-events: none;
-}
-
-
-/* =========================================================
-   IMAGES
-========================================================= */
-
-.product-image,
-.card-image,
-.gallery-image {
-  display: block;
-
-  width: 100%;
-  max-width: 100%;
-
-  object-fit: cover;
-}
-
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-.btn {
+.btn,
+.shop-button {
   display: inline-flex;
-
   align-items: center;
   justify-content: center;
-
   gap: 8px;
-
-  min-height: 44px;
-
-  padding: 12px 24px;
-
-  border: none;
-  border-radius: var(--radius-pill);
-
-  font-size: 14px;
+  min-height: 42px;
+  border-radius: 999px;
+  padding: 12px 18px;
+  border: 1px solid transparent;
+  font-size: 12px;
   font-weight: 700;
-
+  letter-spacing: 0.2px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
   cursor: pointer;
-
-  text-align: center;
-
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    background 0.25s ease;
+  text-decoration: none;
 }
 
-.btn-gold {
-  background: linear-gradient(
-    135deg,
-    var(--gold),
-    #b8860b
-  );
-
-  color: var(--dark-maroon);
-
-  border: 1px solid var(--light-gold);
-
-  box-shadow:
-    0 6px 20px rgba(212, 160, 23, 0.35);
+.btn:focus-visible,
+.shop-button:focus-visible,
+.anand-gold-button:focus-visible,
+.anand-outline-button:focus-visible {
+  outline: 2px solid rgba(156, 130, 64, 0.7);
+  outline-offset: 2px;
 }
 
-.btn-gold:hover {
-  transform: translateY(-3px);
-
-  box-shadow:
-    0 10px 25px rgba(212, 160, 23, 0.5);
+.btn-gold,
+.shop-button {
+  background: #5A3825;
+  color: #FFFDF8;
+  border-color: #3B261A;
+  box-shadow: 0 10px 22px rgba(59, 38, 26, 0.18);
 }
 
-.btn-maroon {
-  background: linear-gradient(
-    135deg,
-    var(--maroon),
-    var(--dark-maroon)
-  );
-
-  color: var(--gold);
-
-  border: 1px solid var(--gold);
-
-  box-shadow:
-    0 6px 20px rgba(94, 15, 26, 0.3);
-}
-
-.btn-maroon:hover {
-  transform: translateY(-3px);
-
-  box-shadow:
-    0 10px 25px rgba(94, 15, 26, 0.45);
-}
-
-.btn-outline {
-  background: rgba(255, 255, 255, 0.12);
-
-  color: var(--white);
-
-  border: 1px solid rgba(255, 255, 255, 0.6);
-
-  backdrop-filter: blur(4px);
-}
-
-.btn-outline:hover {
-  background: var(--white);
-  color: var(--maroon);
+.btn-gold:hover,
+.shop-button:hover {
+  transform: translateY(-2px);
+  background: #3B261A;
+  box-shadow: 0 14px 28px rgba(59, 38, 26, 0.22);
 }
 
 .btn-whatsapp {
-  background: var(--green-whatsapp);
-
-  color: var(--white);
-
-  box-shadow:
-    0 6px 20px rgba(37, 211, 102, 0.35);
+  background: #5A3825;
+  color: #FFFDF8;
+  border-color: #3B261A;
+  box-shadow: 0 10px 22px rgba(59, 38, 26, 0.18);
 }
 
 .btn-whatsapp:hover {
-  background: #20ba5a;
-  transform: translateY(-3px);
+  transform: translateY(-2px);
+  background: #3B261A;
+  box-shadow: 0 14px 28px rgba(59, 38, 26, 0.22);
 }
 
-
-/* =========================================================
-   TELUGU BANNER
-========================================================= */
-
-.telugu-maroon-banner {
-  width: min(100%, 1180px);
-
-  margin: 40px auto;
-
-  padding: 50px 24px;
-
-  background: linear-gradient(
-    135deg,
-    var(--maroon),
-    var(--dark-maroon)
-  );
-
-  color: var(--white);
-
-  border: 2px solid var(--gold);
-  border-radius: 24px;
-
-  position: relative;
-  overflow: hidden;
-
-  box-shadow:
-    0 15px 35px rgba(63, 18, 18, 0.25);
+.btn-maroon,
+.btn-primary {
+  background: linear-gradient(135deg, #5A3825 0%, #3B261A 100%);
+  color: #FFFDF8;
+  border-color: #3B261A;
+  box-shadow: 0 10px 22px rgba(59, 38, 26, 0.18);
 }
 
+.btn-maroon:hover,
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #3B261A 0%, #241F1A 100%);
+  box-shadow: 0 14px 28px rgba(59, 38, 26, 0.22);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #332D25;
+  border-color: rgba(109, 66, 39, 0.6);
+}
+
+.btn-outline:hover {
+  background: rgba(180, 142, 52, 0.08);
+  border-color: #9C8240;
+}
+
+.shop-button {
+  align-self: flex-start;
+  margin-top: 6px;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+}
 
 /* =========================================================
-   ANIMATIONS
+   CLEAN CREAM BACKGROUND
 ========================================================= */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(180, 154, 84, 0.08) 0%,
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 90% 85%,
+      rgba(107, 98, 85, 0.04) 0%,
+      transparent 35%
+    );
+
+  background-repeat: no-repeat;
+}
 
 @keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
   from {
     opacity: 0;
     transform: translateY(12px);
@@ -446,295 +188,26 @@ p {
   }
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
+@keyframes sweetsMenuIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-8px);
   }
 
-  50% {
-    transform: scale(1.06);
-  }
-
-  100% {
-    transform: scale(1);
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
   }
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.35s ease forwards;
+  animation: fadeIn 0.5s ease;
 }
-
-.animate-pulse {
-  animation: pulse 2.2s infinite ease-in-out;
-}
-
 
 /* =========================================================
-   GRID SAFETY
+   TELUGU FONT SUPPORT
 ========================================================= */
 
-.grid {
-  max-width: 100%;
-  min-width: 0;
-}
-
-.grid > * {
-  min-width: 0;
-  max-width: 100%;
-}
-
-
-/* =========================================================
-   TABLET
-   1024px
-========================================================= */
-
-@media screen and (max-width: 1024px) {
-
-  .container {
-    width: calc(100% - 32px);
-    max-width: 900px;
-  }
-
-  .section {
-    padding: 50px 0;
-  }
-
-  .section-title {
-    margin-bottom: 32px;
-  }
-
-  .section-title h2 {
-    font-size: clamp(28px, 5vw, 38px);
-  }
-
-  .telugu-maroon-banner {
-    width: calc(100% - 32px);
-  }
-}
-
-
-/* =========================================================
-   TABLET
-   768px
-========================================================= */
-
-@media screen and (max-width: 768px) {
-
-  .container {
-    width: calc(100% - 28px);
-    max-width: none;
-  }
-
-  .section {
-    padding: 42px 0;
-  }
-
-  .section-title {
-    margin-bottom: 28px;
-  }
-
-  .section-title h2 {
-    font-size: 30px;
-    line-height: 1.2;
-  }
-
-  .section-title p {
-    font-size: 13px;
-    line-height: 1.7;
-  }
-
-  .section-subtitle {
-    font-size: 11px;
-    letter-spacing: 1.5px;
-  }
-
-  .btn {
-    padding: 11px 18px;
-    font-size: 13px;
-  }
-
-  .telugu-maroon-banner {
-    width: calc(100% - 28px);
-
-    margin: 30px auto;
-
-    padding: 36px 18px;
-
-    border-radius: 18px;
-  }
-
-  .traditional-card:hover {
-    transform: none;
-  }
-}
-
-
-/* =========================================================
-   MOBILE
-   600px
-========================================================= */
-
-@media screen and (max-width: 600px) {
-
-  .container {
-    width: calc(100% - 24px);
-  }
-
-  .section {
-    padding: 38px 0;
-  }
-
-  .section-title h2 {
-    font-size: 28px;
-  }
-
-  .section-title p {
-    font-size: 12.5px;
-  }
-
-  .telugu-maroon-banner {
-    width: calc(100% - 20px);
-
-    padding: 30px 15px;
-
-    margin: 25px auto;
-  }
-
-  .btn {
-    min-height: 44px;
-  }
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-   480px
-========================================================= */
-
-@media screen and (max-width: 480px) {
-
-  .container {
-    width: calc(100% - 20px);
-  }
-
-  .section {
-    padding: 34px 0;
-  }
-
-  .section-title {
-    margin-bottom: 24px;
-  }
-
-  .section-title h2 {
-    font-size: 25px;
-  }
-
-  .section-subtitle {
-    font-size: 10px;
-    letter-spacing: 1.2px;
-  }
-
-  .section-title p {
-    font-size: 12px;
-  }
-
-  .btn {
-    width: 100%;
-    max-width: 280px;
-    padding: 11px 15px;
-  }
-
-  .telugu-maroon-banner {
-    width: calc(100% - 16px);
-
-    padding: 27px 13px;
-
-    border-radius: 16px;
-
-    border-width: 1px;
-  }
-}
-
-
-/* =========================================================
-   VERY SMALL MOBILE
-   360px
-========================================================= */
-
-@media screen and (max-width: 360px) {
-
-  .container {
-    width: calc(100% - 16px);
-  }
-
-  .section {
-    padding: 30px 0;
-  }
-
-  .section-title h2 {
-    font-size: 22px;
-  }
-
-  .section-title p {
-    font-size: 11.5px;
-  }
-
-  .btn {
-    max-width: 100%;
-    font-size: 12px;
-  }
-
-  .telugu-maroon-banner {
-    width: calc(100% - 10px);
-    padding: 24px 10px;
-  }
-}
-
-
-/* =========================================================
-   FINAL RESPONSIVE SAFETY
-========================================================= */
-
-section,
-header,
-footer,
-main,
-nav,
-article,
-aside {
-  max-width: 100%;
-  min-width: 0;
-}
-
-.flex {
-  min-width: 0;
-  max-width: 100%;
-}
-
-.flex > * {
-  min-width: 0;
-}
-
-table {
-  max-width: 100%;
-}
-
-input,
-textarea,
-select {
-  width: 100%;
-  max-width: 100%;
-}
-
-
-/* =========================================================
-   REDUCE ANIMATION ON SMALL DEVICES
-========================================================= */
-
-@media screen and (max-width: 480px) {
-
-  .animate-pulse {
-    animation: none;
-  }
+.telugu-font {
+  font-family: 'Noto Sans Telugu', 'Gautami', 'Vemana2000', sans-serif;
 }

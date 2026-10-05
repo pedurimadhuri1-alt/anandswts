@@ -21,7 +21,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="section" style={{ background: '#fff7df' }}>
+    <section id="contact" className="section" style={{ background: '#FFFDF8' }}>
       <div className="container">
         <div className="section-title">
           <span className="section-subtitle">Visit Us</span>
@@ -40,37 +40,37 @@ export default function ContactSection() {
             padding: '36px',
             borderRadius: '24px',
             boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
-            border: '1px solid rgba(94, 15, 26, 0.08)',
+            border: '1px solid rgba(51, 45, 37, 0.08)',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between'
           }}>
             <div>
-              <h3 style={{ fontSize: '24px', color: '#5e0f1a', marginBottom: '24px' }}>
+              <h3 style={{ fontSize: '24px', color: '#332D25', marginBottom: '24px' }}>
                 {STORE_INFO.name} Rajahmundry
               </h3>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '30px' }}>
                 <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
-                  <div style={{ width: '42px', height: '42px', borderRadius: '50%', background: '#fffbeb', border: '1px solid #d4a017', color: '#5e0f1a', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
+                  <div style={{ width: '42px', height: '42px', borderRadius: '50%', background: '#FFFDF8', border: '1px solid #B49A54', color: '#332D25', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
                     <MapPin size={20} />
                   </div>
                   <div>
-                    <h4 style={{ fontSize: '15px', color: '#5e0f1a', margin: 0 }}>Our Boutique Store</h4>
-                    <p style={{ color: '#746565', fontSize: '13px', margin: 0, marginTop: '2px' }}>
+                    <h4 style={{ fontSize: '15px', color: '#332D25', margin: 0 }}>Our Boutique Store</h4>
+                    <p style={{ color: '#6B6255', fontSize: '13px', margin: 0, marginTop: '2px' }}>
                       {STORE_INFO.fullAddress}
                     </p>
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
-                  <div style={{ width: '42px', height: '42px', borderRadius: '50%', background: '#fffbeb', border: '1px solid #d4a017', color: '#5e0f1a', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
+                  <div style={{ width: '42px', height: '42px', borderRadius: '50%', background: '#FFFDF8', border: '1px solid #B49A54', color: '#332D25', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
                     <Phone size={20} />
                   </div>
                   <div>
-                    <h4 style={{ fontSize: '15px', color: '#5e0f1a', margin: 0 }}>Call Us Direct</h4>
-                    <p style={{ color: '#746565', fontSize: '14px', margin: 0, marginTop: '2px', fontWeight: 700 }}>
-                      <a href={`tel:${STORE_INFO.phone}`} style={{ textDecoration: 'none', color: '#5e0f1a' }}>
+                    <h4 style={{ fontSize: '15px', color: '#332D25', margin: 0 }}>Call Us Direct</h4>
+                    <p style={{ color: '#6B6255', fontSize: '14px', margin: 0, marginTop: '2px', fontWeight: 700 }}>
+                      <a href={`tel:${STORE_INFO.phone}`} style={{ textDecoration: 'none', color: '#332D25' }}>
                         {STORE_INFO.phone}
                       </a>
                     </p>
@@ -78,24 +78,24 @@ export default function ContactSection() {
                 </div>
 
                 <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
-                  <div style={{ width: '42px', height: '42px', borderRadius: '50%', background: '#fffbeb', border: '1px solid #25d366', color: '#25d366', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
+                  <div style={{ width: '42px', height: '42px', borderRadius: '50%', background: '#FFFDF8', border: '1px solid #B49A54', color: '#B49A54', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
                     <MessageCircle size={20} />
                   </div>
                   <div>
-                    <h4 style={{ fontSize: '15px', color: '#5e0f1a', margin: 0 }}>WhatsApp Order & Support</h4>
-                    <p style={{ color: '#746565', fontSize: '13px', margin: 0, marginTop: '2px' }}>
+                    <h4 style={{ fontSize: '15px', color: '#332D25', margin: 0 }}>WhatsApp Order & Support</h4>
+                    <p style={{ color: '#6B6255', fontSize: '13px', margin: 0, marginTop: '2px' }}>
                       Instant replies & delivery confirmation on WhatsApp.
                     </p>
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
-                  <div style={{ width: '42px', height: '42px', borderRadius: '50%', background: '#fffbeb', border: '1px solid #d4a017', color: '#5e0f1a', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
+                  <div style={{ width: '42px', height: '42px', borderRadius: '50%', background: '#FFFDF8', border: '1px solid #B49A54', color: '#332D25', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
                     <Clock size={20} />
                   </div>
                   <div>
-                    <h4 style={{ fontSize: '15px', color: '#5e0f1a', margin: 0 }}>Opening Hours</h4>
-                    <p style={{ color: '#746565', fontSize: '13px', margin: 0, marginTop: '2px' }}>
+                    <h4 style={{ fontSize: '15px', color: '#332D25', margin: 0 }}>Opening Hours</h4>
+                    <p style={{ color: '#6B6255', fontSize: '13px', margin: 0, marginTop: '2px' }}>
                       {STORE_INFO.openingHours}
                     </p>
                   </div>
@@ -119,25 +119,25 @@ export default function ContactSection() {
             padding: '36px',
             borderRadius: '24px',
             boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
-            border: '1px solid rgba(94, 15, 26, 0.08)'
+            border: '1px solid rgba(51, 45, 37, 0.08)'
           }}>
-            <h3 style={{ fontSize: '22px', color: '#5e0f1a', marginBottom: '10px' }}>
+            <h3 style={{ fontSize: '22px', color: '#332D25', marginBottom: '10px' }}>
               Special / Bulk Order Enquiry
             </h3>
-            <p style={{ fontSize: '13px', color: '#746565', marginBottom: '20px' }}>
+            <p style={{ fontSize: '13px', color: '#6B6255', marginBottom: '20px' }}>
               Planning a wedding, festival distribution, or custom box order? Drop your details below!
             </p>
 
             {submitted ? (
-              <div style={{ textAlign: 'center', padding: '40px 0', color: '#27ae60' }}>
+              <div style={{ textAlign: 'center', padding: '40px 0', color: '#B49A54' }}>
                 <CheckCircle size={48} style={{ margin: '0 auto 12px' }} />
-                <h4 style={{ fontSize: '18px', color: '#27ae60' }}>Enquiry Received!</h4>
-                <p style={{ fontSize: '14px', color: '#746565' }}>Our Rajahmundry store representative will contact you shortly.</p>
+                <h4 style={{ fontSize: '18px', color: '#B49A54' }}>Enquiry Received!</h4>
+                <p style={{ fontSize: '14px', color: '#6B6255' }}>Our Rajahmundry store representative will contact you shortly.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                 <div>
-                  <label style={{ fontSize: '12px', fontWeight: 700, color: '#5e0f1a', display: 'block', marginBottom: '4px' }}>
+                  <label style={{ fontSize: '12px', fontWeight: 700, color: '#332D25', display: 'block', marginBottom: '4px' }}>
                     Your Full Name:
                   </label>
                   <input
@@ -146,12 +146,12 @@ export default function ContactSection() {
                     placeholder="E.g., Subba Rao"
                     value={formState.name}
                     onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                    style={{ width: '100%', padding: '11px 14px', borderRadius: '10px', border: '1px solid rgba(94, 15, 26, 0.2)', fontFamily: 'inherit' }}
+                    style={{ width: '100%', padding: '11px 14px', borderRadius: '10px', border: '1px solid rgba(51, 45, 37, 0.2)', fontFamily: 'inherit' }}
                   />
                 </div>
 
                 <div>
-                  <label style={{ fontSize: '12px', fontWeight: 700, color: '#5e0f1a', display: 'block', marginBottom: '4px' }}>
+                  <label style={{ fontSize: '12px', fontWeight: 700, color: '#332D25', display: 'block', marginBottom: '4px' }}>
                     Mobile Number / WhatsApp:
                   </label>
                   <input
@@ -160,18 +160,18 @@ export default function ContactSection() {
                     placeholder="+91 9XXXX XXXXX"
                     value={formState.phone}
                     onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
-                    style={{ width: '100%', padding: '11px 14px', borderRadius: '10px', border: '1px solid rgba(94, 15, 26, 0.2)', fontFamily: 'inherit' }}
+                    style={{ width: '100%', padding: '11px 14px', borderRadius: '10px', border: '1px solid rgba(51, 45, 37, 0.2)', fontFamily: 'inherit' }}
                   />
                 </div>
 
                 <div>
-                  <label style={{ fontSize: '12px', fontWeight: 700, color: '#5e0f1a', display: 'block', marginBottom: '4px' }}>
+                  <label style={{ fontSize: '12px', fontWeight: 700, color: '#332D25', display: 'block', marginBottom: '4px' }}>
                     Interested Product / Service:
                   </label>
                   <select
                     value={formState.sweetItem}
                     onChange={(e) => setFormState({ ...formState, sweetItem: e.target.value })}
-                    style={{ width: '100%', padding: '11px 14px', borderRadius: '10px', border: '1px solid rgba(94, 15, 26, 0.2)', fontFamily: 'inherit', fontWeight: 600 }}
+                    style={{ width: '100%', padding: '11px 14px', borderRadius: '10px', border: '1px solid rgba(51, 45, 37, 0.2)', fontFamily: 'inherit', fontWeight: 600 }}
                   >
                     <option value="Signature Anand Kaja">Signature Anand Kaja (Bulk)</option>
                     <option value="Pootharekulu Ghee Boxes">Pootharekulu Ghee Gift Boxes</option>
@@ -182,7 +182,7 @@ export default function ContactSection() {
                 </div>
 
                 <div>
-                  <label style={{ fontSize: '12px', fontWeight: 700, color: '#5e0f1a', display: 'block', marginBottom: '4px' }}>
+                  <label style={{ fontSize: '12px', fontWeight: 700, color: '#332D25', display: 'block', marginBottom: '4px' }}>
                     Additional Message / Quantity:
                   </label>
                   <textarea
@@ -190,7 +190,7 @@ export default function ContactSection() {
                     placeholder="Specify total kg needed, event date, delivery location..."
                     value={formState.message}
                     onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                    style={{ width: '100%', padding: '11px 14px', borderRadius: '10px', border: '1px solid rgba(94, 15, 26, 0.2)', fontFamily: 'inherit', resize: 'none' }}
+                    style={{ width: '100%', padding: '11px 14px', borderRadius: '10px', border: '1px solid rgba(51, 45, 37, 0.2)', fontFamily: 'inherit', resize: 'none' }}
                   />
                 </div>
 
@@ -208,7 +208,7 @@ export default function ContactSection() {
           borderRadius: '24px',
           overflow: 'hidden',
           boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
-          border: '2px solid #d4a017',
+          border: '2px solid #B49A54',
           height: '350px'
         }}>
           <iframe

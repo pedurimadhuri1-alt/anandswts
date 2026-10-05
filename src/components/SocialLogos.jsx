@@ -45,19 +45,19 @@ export function SocialLinksGroup({ variant = 'default', size = 18, gap = 12 }) {
           width: '38px',
           height: '38px',
           borderRadius: '50%',
-          background: isColored ? '#1877F2' : 'rgba(255, 255, 255, 0.12)',
-          color: isColored ? '#ffffff' : '#f1cf68',
+          background: isColored ? '#B49A54' : 'rgba(255, 255, 255, 0.12)',
+          color: isColored ? '#ffffff' : '#D7C58F',
           border: isColored ? 'none' : '1px solid rgba(255, 255, 255, 0.25)',
           display: 'grid',
           placeItems: 'center',
           textDecoration: 'none',
           transition: 'all 0.3s ease',
-          boxShadow: isColored ? '0 4px 12px rgba(24, 119, 242, 0.35)' : 'none'
+          boxShadow: isColored ? '0 4px 12px rgba(180, 154, 84, 0.35)' : 'none'
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.transform = 'translateY(-3px) scale(1.08)';
           if (!isColored) {
-            e.currentTarget.style.background = '#1877F2';
+            e.currentTarget.style.background = '#B49A54';
             e.currentTarget.style.color = '#ffffff';
           }
         }}
@@ -65,7 +65,7 @@ export function SocialLinksGroup({ variant = 'default', size = 18, gap = 12 }) {
           e.currentTarget.style.transform = 'translateY(0) scale(1)';
           if (!isColored) {
             e.currentTarget.style.background = 'rgba(255, 255, 255, 0.12)';
-            e.currentTarget.style.color = '#f1cf68';
+            e.currentTarget.style.color = '#D7C58F';
           }
         }}
       >
@@ -84,20 +84,20 @@ export function SocialLinksGroup({ variant = 'default', size = 18, gap = 12 }) {
           height: '38px',
           borderRadius: '50%',
           background: isColored
-            ? 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)'
+            ? 'linear-gradient(45deg, #B49A54 0%, #9C8240 25%, #9C8240 50%, #9C8240 75%, #9C8240 100%)'
             : 'rgba(255, 255, 255, 0.12)',
-          color: isColored ? '#ffffff' : '#f1cf68',
+          color: isColored ? '#ffffff' : '#D7C58F',
           border: isColored ? 'none' : '1px solid rgba(255, 255, 255, 0.25)',
           display: 'grid',
           placeItems: 'center',
           textDecoration: 'none',
           transition: 'all 0.3s ease',
-          boxShadow: isColored ? '0 4px 12px rgba(220, 39, 67, 0.35)' : 'none'
+          boxShadow: isColored ? '0 4px 12px rgba(156, 130, 64, 0.35)' : 'none'
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.transform = 'translateY(-3px) scale(1.08)';
           if (!isColored) {
-            e.currentTarget.style.background = 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)';
+            e.currentTarget.style.background = 'linear-gradient(45deg, #B49A54 0%, #9C8240 25%, #9C8240 50%, #9C8240 75%, #9C8240 100%)';
             e.currentTarget.style.color = '#ffffff';
           }
         }}
@@ -105,7 +105,7 @@ export function SocialLinksGroup({ variant = 'default', size = 18, gap = 12 }) {
           e.currentTarget.style.transform = 'translateY(0) scale(1)';
           if (!isColored) {
             e.currentTarget.style.background = 'rgba(255, 255, 255, 0.12)';
-            e.currentTarget.style.color = '#f1cf68';
+            e.currentTarget.style.color = '#D7C58F';
           }
         }}
       >
@@ -123,19 +123,19 @@ export function SocialLinksGroup({ variant = 'default', size = 18, gap = 12 }) {
           width: '38px',
           height: '38px',
           borderRadius: '50%',
-          background: isColored ? '#25D366' : 'rgba(255, 255, 255, 0.12)',
-          color: isColored ? '#ffffff' : '#25D366',
-          border: isColored ? 'none' : '1px solid rgba(37, 211, 102, 0.35)',
+          background: isColored ? '#B49A54' : 'rgba(255, 255, 255, 0.12)',
+          color: isColored ? '#ffffff' : '#B49A54',
+          border: isColored ? 'none' : '1px solid rgba(180, 154, 84, 0.35)',
           display: 'grid',
           placeItems: 'center',
           textDecoration: 'none',
           transition: 'all 0.3s ease',
-          boxShadow: isColored ? '0 4px 12px rgba(37, 211, 102, 0.35)' : 'none'
+          boxShadow: isColored ? '0 4px 12px rgba(180, 154, 84, 0.35)' : 'none'
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.transform = 'translateY(-3px) scale(1.08)';
           if (!isColored) {
-            e.currentTarget.style.background = '#25D366';
+            e.currentTarget.style.background = '#B49A54';
             e.currentTarget.style.color = '#ffffff';
           }
         }}
@@ -143,7 +143,7 @@ export function SocialLinksGroup({ variant = 'default', size = 18, gap = 12 }) {
           e.currentTarget.style.transform = 'translateY(0) scale(1)';
           if (!isColored) {
             e.currentTarget.style.background = 'rgba(255, 255, 255, 0.12)';
-            e.currentTarget.style.color = '#25D366';
+            e.currentTarget.style.color = '#B49A54';
           }
         }}
       >

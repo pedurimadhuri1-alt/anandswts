@@ -11,12 +11,12 @@ export default function Toast({ message, isVisible }) {
       left: '50%',
       transform: 'translateX(-50%)',
       zIndex: 2000,
-      background: 'linear-gradient(135deg, #3d0810, #5e0f1a)',
-      color: '#f1cf68',
+      background: 'linear-gradient(135deg, #241F1A, #332D25)',
+      color: '#D7C58F',
       padding: '12px 24px',
       borderRadius: '50px',
       boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
-      border: '1px solid #d4a017',
+      border: '1px solid #B49A54',
       display: 'flex',
       alignItems: 'center',
       gap: '10px',
@@ -24,7 +24,7 @@ export default function Toast({ message, isVisible }) {
       fontWeight: 700,
       animation: 'fadeIn 0.3s ease'
     }}>
-      <CheckCircle2 size={18} style={{ color: '#27ae60' }} />
+      <CheckCircle2 size={18} style={{ color: '#B49A54' }} />
       <span>{message}</span>
     </div>
   );

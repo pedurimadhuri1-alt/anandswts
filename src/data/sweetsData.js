@@ -4,7 +4,6 @@ export const SWEETS_DATA = [
     name: "Signature Anand Kaja",
     teluguName: "ఆనంద్ కాజా",
     category: "special",
-    pricePerKg: 340,
     rating: 4.9,
     reviewsCount: 380,
     image: "/images/anand_kaja.png",
@@ -26,7 +25,6 @@ export const SWEETS_DATA = [
     name: "Pure Ghee Pootharekulu",
     teluguName: "పూతరేకులు",
     category: "ghee",
-    pricePerKg: 520,
     rating: 5.0,
     reviewsCount: 420,
     image: "/images/pootharekulu.png",
@@ -49,7 +47,6 @@ export const SWEETS_DATA = [
     name: "Urad Dal Ghee Sunnundalu",
     teluguName: "మినప సున్నుండలు",
     category: "traditional",
-    pricePerKg: 440,
     rating: 4.9,
     reviewsCount: 350,
 
@@ -75,7 +72,6 @@ export const SWEETS_DATA = [
     name: "Crispy Pappu Chekkalu",
     teluguName: "పప్పు బియ్యపు చెక్కలు",
     category: "savouries",
-    pricePerKg: 280,
     rating: 4.8,
     reviewsCount: 220,
 
@@ -101,7 +97,6 @@ export const SWEETS_DATA = [
     name: "Mysore Pak Trilogy Box",
     teluguName: "నెయ్యి మైసూర్ పాక్ బాక్స్",
     category: "ghee",
-    pricePerKg: 480,
     rating: 5.0,
     reviewsCount: 410,
 
@@ -127,7 +122,6 @@ export const SWEETS_DATA = [
     name: "Anand Special Savoury Mixture",
     teluguName: "ఆనంద్ స్పెషల్ మిక్చర్",
     category: "savouries",
-    pricePerKg: 260,
     rating: 4.7,
     reviewsCount: 290,
 
@@ -153,7 +147,6 @@ export const SWEETS_DATA = [
     name: "Jaggery Nuvvula Ariselu",
     teluguName: "నువ్వుల అరిసెలు",
     category: "traditional",
-    pricePerKg: 300,
     rating: 4.8,
     reviewsCount: 290,
     image: "/images/ariselu.png",
@@ -176,7 +169,6 @@ export const SWEETS_DATA = [
     name: "Ugadi Grand Festive Gift Box",
     teluguName: "ఉగాది పండుగ స్పెషల్ బాక్స్",
     category: "gifting",
-    pricePerKg: 680,
     rating: 5.0,
     reviewsCount: 510,
     image: "/images/custom_gift_box.png",

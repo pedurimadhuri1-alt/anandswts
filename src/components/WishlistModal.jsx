@@ -1,8 +1,8 @@
 import React from 'react';
-import { X, Heart, ShoppingBag, Trash2 } from 'lucide-react';
+import { X, Heart, Trash2 } from 'lucide-react';
 import { SWEETS_DATA } from '../data/sweetsData';
 
-export default function WishlistModal({ isOpen, onClose, wishlistIds, onToggleWishlist, onAddToCart }) {
+export default function WishlistModal({ isOpen, onClose, wishlistIds, onToggleWishlist }) {
   if (!isOpen) return null;
 
   const wishlistedSweets = SWEETS_DATA.filter(sweet => wishlistIds.includes(sweet.id));
@@ -12,21 +12,21 @@ export default function WishlistModal({ isOpen, onClose, wishlistIds, onToggleWi
       position: 'fixed',
       inset: 0,
       zIndex: 1000,
-      background: 'rgba(38, 5, 9, 0.75)',
+      background: 'rgba(36, 31, 26, 0.75)',
       backdropFilter: 'blur(6px)',
       display: 'grid',
       placeItems: 'center',
       padding: '20px'
     }} onClick={onClose}>
       <div style={{
-        background: '#fffbeb',
+        background: '#FFFDF8',
         borderRadius: '24px',
         maxWidth: '560px',
         width: '100%',
         maxHeight: '80vh',
         overflowY: 'auto',
         padding: '30px',
-        border: '2px solid #d4a017',
+        border: '2px solid #B49A54',
         position: 'relative'
       }} onClick={(e) => e.stopPropagation()}>
         <button
@@ -35,8 +35,8 @@ export default function WishlistModal({ isOpen, onClose, wishlistIds, onToggleWi
             position: 'absolute',
             top: '16px',
             right: '16px',
-            background: '#5e0f1a',
-            color: '#d4a017',
+            background: '#332D25',
+            color: '#B49A54',
             border: 'none',
             borderRadius: '50%',
             width: '32px',
@@ -50,15 +50,15 @@ export default function WishlistModal({ isOpen, onClose, wishlistIds, onToggleWi
         </button>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-          <Heart size={24} style={{ color: '#c0392b' }} fill="#c0392b" />
-          <h2 style={{ fontSize: '22px', color: '#5e0f1a', margin: 0 }}>
+          <Heart size={24} style={{ color: '#9C8240' }} fill="#9C8240" />
+          <h2 style={{ fontSize: '22px', color: '#332D25', margin: 0 }}>
             Your Wishlist ({wishlistedSweets.length})
           </h2>
         </div>
 
         {wishlistedSweets.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: '40px 0', color: '#746565' }}>
-            <Heart size={40} style={{ color: '#ccc', margin: '0 auto 12px' }} />
+          <div style={{ textAlign: 'center', padding: '40px 0', color: '#6B6255' }}>
+            <Heart size={40} style={{ color: '#D7C9A5', margin: '0 auto 12px' }} />
             <p style={{ fontSize: '14px' }}>You haven't saved any sweets to your wishlist yet.</p>
           </div>
         ) : (
@@ -70,7 +70,7 @@ export default function WishlistModal({ isOpen, onClose, wishlistIds, onToggleWi
                   background: '#ffffff',
                   borderRadius: '16px',
                   padding: '14px',
-                  border: '1px solid rgba(94, 15, 26, 0.08)',
+                  border: '1px solid rgba(51, 45, 37, 0.08)',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '12px',
@@ -80,25 +80,14 @@ export default function WishlistModal({ isOpen, onClose, wishlistIds, onToggleWi
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                   <img src={sweet.image} alt={sweet.name} style={{ width: '54px', height: '54px', borderRadius: '10px', objectFit: 'cover' }} />
                   <div>
-                    <div style={{ fontWeight: 700, fontSize: '14px', color: '#5e0f1a' }}>{sweet.name}</div>
-                    <div style={{ fontSize: '12px', color: '#746565' }}>₹{sweet.pricePerKg} / kg</div>
+                    <div style={{ fontWeight: 700, fontSize: '14px', color: '#332D25' }}>{sweet.name}</div>
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <button
-                    onClick={() => {
-                      onAddToCart(sweet, sweet.availableWeights[sweet.availableWeights.length - 1]);
-                    }}
-                    className="btn btn-gold"
-                    style={{ padding: '8px 14px', fontSize: '12px' }}
-                  >
-                    <ShoppingBag size={14} /> Add
-                  </button>
-
-                  <button
                     onClick={() => onToggleWishlist(sweet.id)}
-                    style={{ background: 'none', border: 'none', color: '#c0392b', cursor: 'pointer', padding: '4px' }}
+                    style={{ background: 'none', border: 'none', color: '#9C8240', cursor: 'pointer', padding: '4px' }}
                   >
                     <Trash2 size={18} />
                   </button>

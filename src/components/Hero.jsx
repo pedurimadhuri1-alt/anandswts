@@ -1,151 +1,527 @@
-import React from 'react';
-import { Award, ShoppingBag, Sparkles, MapPin, HeartHandshake, ShieldCheck } from 'lucide-react';
-import { STORE_INFO } from '../data/sweetsData';
+import React from "react";
+import {
+  Award,
+  ShoppingBag,
+  Sparkles,
+  MapPin,
+  HeartHandshake,
+  ShieldCheck,
+} from "lucide-react";
 
 export default function Hero() {
   return (
-    <section id="home" style={{
-      minHeight: '85vh',
-      position: 'relative',
-      display: 'flex',
-      alignItems: 'center',
-      overflow: 'hidden',
-      paddingTop: '20px',
-      paddingBottom: '60px'
-    }}>
-      {/* Background Image Container */}
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        zIndex: -2
-      }}>
+    <section
+      id="home"
+      className="anand-hero"
+    >
+      {/* BACKGROUND IMAGE */}
+      <div className="anand-hero-background">
         <img
           src="/images/hero_sweets.png"
-          alt="Anand Sweets Rajahmundry Spread"
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center'
-          }}
+          alt="Anand Sweets Rajahmundry"
         />
       </div>
 
-      {/* Dark Overlay Gradient */}
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        background: 'linear-gradient(90deg, rgba(38, 5, 9, 0.94) 0%, rgba(38, 5, 9, 0.78) 50%, rgba(38, 5, 9, 0.3) 100%)',
-        zIndex: -1
-      }} />
+      {/* IMAGE OVERLAY */}
+      <div className="anand-hero-overlay"></div>
 
-      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{ maxWidth: '680px', color: '#ffffff', paddingTop: '40px' }}>
-          {/* Badge */}
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            color: '#d4a017',
-            background: 'rgba(212, 160, 23, 0.15)',
-            border: '1px solid rgba(212, 160, 23, 0.4)',
-            padding: '6px 16px',
-            borderRadius: '50px',
-            fontWeight: 700,
-            fontSize: '13px',
-            letterSpacing: '1.5px',
-            textTransform: 'uppercase',
-            marginBottom: '20px'
-          }}>
-            <Sparkles size={16} />
-            <span>Anand Sweets · Rajahmundry</span>
+      {/* CONTENT */}
+      <div className="container anand-hero-container">
+        <div className="anand-hero-content">
+
+          {/* BRAND LABEL */}
+          <div className="anand-hero-label">
+            <span className="hero-line"></span>
+
+            <Sparkles size={14} />
+
+            <span>ANAND SWEETS · RAJAHMUNDRY</span>
+
+            <span className="hero-line"></span>
           </div>
 
-          {/* Headline */}
-          <h1 style={{
-            fontSize: 'clamp(38px, 5.5vw, 68px)',
-            lineHeight: 1.08,
-            color: '#ffffff',
-            fontWeight: 800,
-            marginBottom: '20px',
-            textShadow: '0 4px 20px rgba(0,0,0,0.5)'
-          }}>
-            Sweetness <br />
-            Brings <span style={{ color: '#d4a017' }}>People Together.</span>
+          {/* HEADING */}
+          <h1>
+            Sweetness Brings
+            <br />
+            <span>People Together.</span>
           </h1>
 
-          {/* Subtitle */}
-          <p style={{
-            fontSize: '16px',
-            color: '#fff8e8',
-            lineHeight: 1.8,
-            maxWidth: '580px',
-            marginBottom: '30px'
-          }}>
-            Authentic Andhra flavours, 100% pure desi ghee, and generations of sweet tradition. Famous for our trademark <strong style={{ color: '#f1cf68' }}>Signature Anand Kaja</strong> and Pootharekulu — crafted fresh daily in Rajahmundry.
+          {/* DESCRIPTION */}
+          <p className="anand-hero-description">
+            Authentic Andhra flavours, traditional recipes and
+            generations of sweet-making heritage. Discover the
+            taste of Anand Sweets, freshly prepared in Rajahmundry.
           </p>
 
-          {/* Telugu Heritage Line */}
-          <p className="telugu-font" style={{
-            fontSize: '20px',
-            color: '#f1cf68',
-            marginBottom: '32px',
-            lineHeight: 1.5
-          }}>
-            రాజమండ్రి మట్టిలో పుట్టిన రుచులు... ప్రతి తీపి జ్ఞాపకంగా మారేలా.
+          {/* TELUGU */}
+          <p className="anand-hero-telugu telugu-font">
+            రాజమండ్రి మట్టిలో పుట్టిన రుచులు...
+            ప్రతి తీపి జ్ఞాపకంగా మారేలా.
           </p>
 
-          {/* Action Buttons */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', marginBottom: '45px' }}>
-            <a href="#menu" className="btn btn-gold" style={{ fontSize: '15px', padding: '14px 28px' }}>
-              <ShoppingBag size={18} />
-              Explore Sweets Menu
+          {/* BUTTONS */}
+          <div className="anand-hero-buttons">
+            <a
+              href="#menu"
+              className="anand-gold-button"
+            >
+              <ShoppingBag size={17} />
+              Explore Sweets
             </a>
-            <a href="#box-builder" className="btn btn-maroon" style={{ fontSize: '15px', padding: '14px 28px' }}>
-              <Sparkles size={18} />
-              Build Custom Gift Box
+
+            <a
+              href="#box-builder"
+              className="anand-outline-button"
+            >
+              <Sparkles size={17} />
+              Gift Boxes
             </a>
-            <a href="#contact" className="btn btn-outline" style={{ fontSize: '15px', padding: '14px 28px' }}>
-              <MapPin size={18} />
-              Visit Rajahmundry Store
+
+            <a
+              href="#contact"
+              className="anand-outline-button"
+            >
+              <MapPin size={17} />
+              Visit Store
             </a>
           </div>
 
-          {/* Highlights Ticker / Feature Badges */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
-            gap: '14px',
-            background: 'rgba(255, 255, 255, 0.08)',
-            backdropFilter: 'blur(10px)',
-            border: '1px solid rgba(255, 255, 255, 0.15)',
-            borderRadius: '16px',
-            padding: '16px 20px'
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <Award size={24} style={{ color: '#d4a017' }} />
+          {/* FEATURES */}
+          <div className="anand-hero-features">
+
+            <div className="anand-hero-feature">
+              <Award size={23} />
+
               <div>
-                <div style={{ color: '#d4a017', fontWeight: 800, fontSize: '16px' }}>40+ Years</div>
-                <div style={{ color: '#ddd', fontSize: '11px' }}>Sweet Heritage</div>
+                <strong>40+ Years</strong>
+                <small>Sweet Heritage</small>
               </div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <ShieldCheck size={24} style={{ color: '#d4a017' }} />
+
+            <div className="anand-hero-feature">
+              <ShieldCheck size={23} />
+
               <div>
-                <div style={{ color: '#d4a017', fontWeight: 800, fontSize: '16px' }}>100% Pure</div>
-                <div style={{ color: '#ddd', fontSize: '11px' }}>Desi Ghee</div>
+                <strong>100% Pure</strong>
+                <small>Desi Ghee</small>
               </div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <HeartHandshake size={24} style={{ color: '#d4a017' }} />
+
+            <div className="anand-hero-feature">
+              <HeartHandshake size={23} />
+
               <div>
-                <div style={{ color: '#d4a017', fontWeight: 800, fontSize: '16px' }}>50,000+</div>
-                <div style={{ color: '#ddd', fontSize: '11px' }}>Happy Families</div>
+                <strong>50,000+</strong>
+                <small>Happy Families</small>
               </div>
             </div>
+
           </div>
         </div>
       </div>
+
+      {/* HERO STYLES */}
+      <style>{`
+
+        /* ===============================
+           ANAND SWEETS HERO
+        =============================== */
+
+        .anand-hero {
+          position: relative;
+          isolation: isolate;
+          min-height: 650px;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          background: #6B6255;
+        }
+
+        /* IMAGE */
+
+        .anand-hero-background {
+          position: absolute;
+          inset: 0;
+          z-index: -2;
+        }
+
+        .anand-hero-background img {
+          width: 100%;
+          height: 100%;
+          display: block;
+          object-fit: cover;
+          object-position: center;
+        }
+
+        /* OVERLAY */
+
+        .anand-hero-overlay {
+          position: absolute;
+          inset: 0;
+          z-index: -1;
+
+          background:
+            linear-gradient(
+              90deg,
+              rgba(53, 35, 18, 0.78) 0%,
+              rgba(67, 45, 23, 0.55) 42%,
+              rgba(67, 45, 23, 0.18) 100%
+            );
+        }
+
+        /* CONTAINER */
+
+        .anand-hero-container {
+          position: relative;
+          z-index: 2;
+        }
+
+        .anand-hero-content {
+          width: min(700px, 100%);
+          padding: 90px 0;
+          color: white;
+        }
+
+        /* LABEL */
+
+        .anand-hero-label {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 9px;
+
+          color: #D7C58F;
+
+          font-size: 10px;
+          letter-spacing: 2px;
+          font-weight: 600;
+
+          margin-bottom: 22px;
+        }
+
+        .hero-line {
+          width: 28px;
+          height: 1px;
+          background: #D7C58F;
+        }
+
+        /* HEADING */
+
+        .anand-hero h1 {
+          margin: 0 0 20px;
+
+          color: #FFFDF8;
+
+          font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+          font-size: clamp(
+            42px,
+            5.5vw,
+            70px
+          );
+
+          line-height: 1.08;
+          font-weight: 600;
+
+          text-shadow:
+            0 4px 25px
+            rgba(0,0,0,.35);
+        }
+
+        .anand-hero h1 span {
+          color: #D7C58F;
+        }
+
+        /* DESCRIPTION */
+
+        .anand-hero-description {
+          max-width: 590px;
+
+          color: rgba(
+            255,
+            253,
+            247,
+            .92
+          );
+
+          font-size: 15px;
+          line-height: 1.8;
+
+          margin: 0 0 18px;
+        }
+
+        /* TELUGU */
+
+        .anand-hero-telugu {
+          color: #D7C58F;
+
+          font-size: 19px;
+
+          line-height: 1.6;
+
+          margin: 0 0 28px;
+        }
+
+        /* BUTTONS */
+
+        .anand-hero-buttons {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+
+          margin-bottom: 38px;
+        }
+
+        .anand-gold-button,
+        .anand-outline-button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+
+          gap: 8px;
+
+          padding: 12px 20px;
+
+          font-size: 11px;
+          letter-spacing: .3px;
+
+          text-decoration: none;
+
+          transition:
+            .25s ease;
+        }
+
+        .anand-gold-button {
+          background: #B49A54;
+          color: white;
+
+          border: 1px solid #B49A54;
+        }
+
+        .anand-gold-button:hover {
+          background: #9C8240;
+          border-color: #9C8240;
+          transform: translateY(-2px);
+        }
+
+        .anand-outline-button {
+          color: white;
+
+          background:
+            rgba(
+              255,
+              255,
+              255,
+              .08
+            );
+
+          border: 1px solid
+            rgba(
+              255,
+              255,
+              255,
+              .55
+            );
+        }
+
+        .anand-outline-button:hover {
+          background: white;
+          color: #9C8240;
+          transform: translateY(-2px);
+        }
+
+        /* FEATURES */
+
+        .anand-hero-features {
+          display: flex;
+          flex-wrap: wrap;
+
+          gap: 0;
+
+          width: fit-content;
+
+          background:
+            rgba(
+              255,
+              253,
+              247,
+              .10
+            );
+
+          border:
+            1px solid
+            rgba(
+              255,
+              255,
+              255,
+              .25
+            );
+
+          backdrop-filter: blur(8px);
+        }
+
+        .anand-hero-feature {
+          display: flex;
+          align-items: center;
+
+          gap: 9px;
+
+          padding: 14px 18px;
+
+          border-right:
+            1px solid
+            rgba(
+              255,
+              255,
+              255,
+              .18
+            );
+        }
+
+        .anand-hero-feature:last-child {
+          border-right: none;
+        }
+
+        .anand-hero-feature svg {
+          color: #D7C58F;
+          flex-shrink: 0;
+        }
+
+        .anand-hero-feature div {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .anand-hero-feature strong {
+          color: #D7C58F;
+          font-size: 13px;
+          font-weight: 700;
+        }
+
+        .anand-hero-feature small {
+          color: rgba(
+            255,
+            255,
+            255,
+            .78
+          );
+
+          font-size: 9px;
+
+          margin-top: 2px;
+        }
+
+        /* TABLET */
+
+        @media (max-width: 800px) {
+
+          .anand-hero {
+            min-height: 620px;
+          }
+
+          .anand-hero-content {
+            padding:
+              75px 0;
+          }
+
+          .anand-hero h1 {
+            font-size: 48px;
+          }
+
+          .anand-hero-features {
+            width: 100%;
+          }
+
+          .anand-hero-feature {
+            flex: 1;
+          }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+          .anand-hero {
+            min-height: 680px;
+          }
+
+          .anand-hero-background img {
+            object-position: center;
+          }
+
+          .anand-hero-overlay {
+            background:
+              linear-gradient(
+                90deg,
+                rgba(45, 29, 15, .82),
+                rgba(45, 29, 15, .58)
+              );
+          }
+
+          .anand-hero-content {
+            padding: 70px 0;
+          }
+
+          .anand-hero-label {
+            font-size: 8px;
+            letter-spacing: 1.4px;
+          }
+
+          .hero-line {
+            width: 18px;
+          }
+
+          .anand-hero h1 {
+            font-size: 42px;
+          }
+
+          .anand-hero-description {
+            font-size: 13px;
+            line-height: 1.7;
+          }
+
+          .anand-hero-telugu {
+            font-size: 16px;
+          }
+
+          .anand-hero-buttons {
+            flex-direction: column;
+            align-items: stretch;
+          }
+
+          .anand-gold-button,
+          .anand-outline-button {
+            width: 100%;
+          }
+
+          .anand-hero-features {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+          }
+
+          .anand-hero-feature {
+            border-right: none;
+            border-bottom:
+              1px solid
+              rgba(
+                255,
+                255,
+                255,
+                .16
+              );
+          }
+
+          .anand-hero-feature:last-child {
+            border-bottom: none;
+          }
+        }
+
+      `}</style>
     </section>
   );
 }

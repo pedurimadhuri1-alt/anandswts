@@ -53,10 +53,10 @@ export default function ServicesSection() {
             <div
               key={i}
               style={{
-                background: '#fffbeb',
+                background: '#FFFDF8',
                 borderRadius: '20px',
                 padding: '30px',
-                border: '1px solid rgba(94, 15, 26, 0.08)',
+                border: '1px solid rgba(51, 45, 37, 0.08)',
                 transition: 'all 0.3s ease',
                 display: 'flex',
                 flexDirection: 'column',
@@ -64,7 +64,7 @@ export default function ServicesSection() {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-6px)';
-                e.currentTarget.style.boxShadow = '0 15px 35px rgba(63, 18, 18, 0.1)';
+                e.currentTarget.style.boxShadow = '0 15px 35px rgba(51, 45, 37, 0.1)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
@@ -75,16 +75,16 @@ export default function ServicesSection() {
                 width: '60px',
                 height: '60px',
                 borderRadius: '16px',
-                background: 'linear-gradient(135deg, #5e0f1a, #3d0810)',
-                color: '#d4a017',
+                background: 'linear-gradient(135deg, #332D25, #241F1A)',
+                color: '#B49A54',
                 display: 'grid',
                 placeItems: 'center',
-                boxShadow: '0 6px 16px rgba(94, 15, 26, 0.2)'
+                boxShadow: '0 6px 16px rgba(51, 45, 37, 0.2)'
               }}>
                 {srv.icon}
               </div>
-              <h3 style={{ fontSize: '20px', color: '#5e0f1a' }}>{srv.title}</h3>
-              <p style={{ color: '#746565', fontSize: '14px', lineHeight: 1.7 }}>{srv.description}</p>
+              <h3 style={{ fontSize: '20px', color: '#332D25' }}>{srv.title}</h3>
+              <p style={{ color: '#6B6255', fontSize: '14px', lineHeight: 1.7 }}>{srv.description}</p>
             </div>
           ))}
         </div>

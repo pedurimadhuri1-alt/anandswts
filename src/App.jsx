@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
@@ -8,15 +8,16 @@ import QuickViewModal from './components/QuickViewModal';
 import Toast from './components/Toast';
 import FloatingActions from './components/FloatingActions';
 
-// 5 Page Views Matching attached Image 0:
 import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
 import MenuPage from './pages/MenuPage';
+import SavouriesPage from './pages/SavouriesPage';
 import ServicesPage from './pages/ServicesPage';
 import GalleryPage from './pages/GalleryPage';
 import ContactPage from './pages/ContactPage';
 
 export default function App() {
-  const [activePage, setActivePage] = useState('home'); // 'home', 'menu', 'services', 'gallery', 'contact'
+  const [activePage, setActivePage] = useState('home');
   const [cartItems, setCartItems] = useState([]);
   const [wishlistIds, setWishlistIds] = useState([]);
   const [quickViewSweet, setQuickViewSweet] = useState(null);
@@ -27,47 +28,53 @@ export default function App() {
   const [toastMessage, setToastMessage] = useState('');
   const [isToastVisible, setIsToastVisible] = useState(false);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [activePage]);
+
   const showToast = (msg) => {
     setToastMessage(msg);
     setIsToastVisible(true);
-    setTimeout(() => {
-      setIsToastVisible(false);
-    }, 2800);
+    window.setTimeout(() => setIsToastVisible(false), 2800);
   };
 
-  const handleAddToCart = (sweet, weightObj) => {
+  const handleAddToCart = (sweet, weightObj, quantity = 1) => {
     setCartItems((prevItems) => {
       const existingIndex = prevItems.findIndex(
-        (item) => item.sweet.id === sweet.id && item.weight.label === weightObj.label
+        (item) => item.sweet.id === sweet.id && item.weight.label === weightObj.label,
       );
 
       if (existingIndex > -1) {
         const updated = [...prevItems];
-        updated[existingIndex].quantity += 1;
+        updated[existingIndex].quantity += quantity;
         return updated;
-      } else {
-        return [...prevItems, { sweet, weight: weightObj, quantity: 1 }];
       }
+
+      return [...prevItems, { sweet, weight: weightObj, quantity }];
     });
 
     showToast(`Added ${sweet.name} (${weightObj.label}) to Cart!`);
   };
 
   const handleUpdateQuantity = (sweetId, weightLabel, delta) => {
-    setCartItems((prevItems) => {
-      return prevItems.map((item) => {
-        if (item.sweet.id === sweetId && item.weight.label === weightLabel) {
-          const newQty = item.quantity + delta;
-          return newQty > 0 ? { ...item, quantity: newQty } : null;
-        }
-        return item;
-      }).filter(Boolean);
-    });
+    setCartItems((prevItems) =>
+      prevItems
+        .map((item) => {
+          if (item.sweet.id === sweetId && item.weight.label === weightLabel) {
+            const newQty = item.quantity + delta;
+            return newQty > 0 ? { ...item, quantity: newQty } : null;
+          }
+          return item;
+        })
+        .filter(Boolean),
+    );
   };
 
   const handleRemoveItem = (sweetId, weightLabel) => {
     setCartItems((prevItems) =>
-      prevItems.filter((item) => !(item.sweet.id === sweetId && item.weight.label === weightLabel))
+      prevItems.filter(
+        (item) => !(item.sweet.id === sweetId && item.weight.label === weightLabel),
+      ),
     );
     showToast('Item removed from cart');
   };
@@ -77,10 +84,10 @@ export default function App() {
       if (prev.includes(sweetId)) {
         showToast('Removed from wishlist');
         return prev.filter((id) => id !== sweetId);
-      } else {
-        showToast('Added to your Wishlist ❤️');
-        return [...prev, sweetId];
       }
+
+      showToast('Added to your Wishlist ❤️');
+      return [...prev, sweetId];
     });
   };
 
@@ -89,8 +96,7 @@ export default function App() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#fbf5e8' }}>
-      {/* Navbar with Logo Crest & 5 Page Tabs */}
+    <div className="site-app">
       <Navbar
         activePage={activePage}
         setActivePage={setActivePage}
@@ -100,15 +106,18 @@ export default function App() {
         onOpenWishlist={() => setIsWishlistOpen(true)}
       />
 
-      {/* Dynamic 5 Page Switcher */}
-      <main style={{ flex: 1 }}>
+      <main className="page-main">
         {activePage === 'home' && (
           <HomePage
             setActivePage={setActivePage}
             onAddToCart={handleAddToCart}
+            onToggleWishlist={handleToggleWishlist}
+            wishlistIds={wishlistIds}
             onOpenQuickView={(sweet) => setQuickViewSweet(sweet)}
           />
         )}
+
+        {activePage === 'about' && <AboutPage setActivePage={setActivePage} />}
 
         {activePage === 'menu' && (
           <MenuPage
@@ -119,23 +128,29 @@ export default function App() {
           />
         )}
 
-        {activePage === 'services' && (
-          <ServicesPage setActivePage={setActivePage} />
+        {activePage === 'savouries' && (
+          <SavouriesPage
+            onAddToCart={handleAddToCart}
+            onToggleWishlist={handleToggleWishlist}
+            wishlistIds={wishlistIds}
+            onOpenQuickView={(sweet) => setQuickViewSweet(sweet)}
+          />
         )}
 
+        {activePage === 'services' && <ServicesPage setActivePage={setActivePage} />}
         {activePage === 'gallery' && (
-          <GalleryPage />
+          <GalleryPage
+            onAddToCart={handleAddToCart}
+            onToggleWishlist={handleToggleWishlist}
+            wishlistIds={wishlistIds}
+            onOpenQuickView={(sweet) => setQuickViewSweet(sweet)}
+          />
         )}
-
-        {activePage === 'contact' && (
-          <ContactPage onAddToCart={handleAddToCart} />
-        )}
+        {activePage === 'contact' && <ContactPage />}
       </main>
 
-      {/* Footer */}
       <Footer setActivePage={setActivePage} />
 
-      {/* Slide-Over Cart Drawer */}
       <CartDrawer
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
@@ -145,14 +160,14 @@ export default function App() {
         onProceedCheckout={() => setIsCheckoutOpen(true)}
       />
 
-      {/* Quick View Sweet Modal */}
       <QuickViewModal
         sweet={quickViewSweet}
         onClose={() => setQuickViewSweet(null)}
         onAddToCart={handleAddToCart}
+        onToggleWishlist={handleToggleWishlist}
+        isWishlisted={quickViewSweet ? wishlistIds.includes(quickViewSweet.id) : false}
       />
 
-      {/* Wishlist Modal */}
       <WishlistModal
         isOpen={isWishlistOpen}
         onClose={() => setIsWishlistOpen(false)}
@@ -161,7 +176,6 @@ export default function App() {
         onAddToCart={handleAddToCart}
       />
 
-      {/* Checkout Modal */}
       <CheckoutModal
         isOpen={isCheckoutOpen}
         onClose={() => setIsCheckoutOpen(false)}
@@ -169,10 +183,7 @@ export default function App() {
         onClearCart={handleClearCart}
       />
 
-      {/* Floating Action Buttons */}
       <FloatingActions />
-
-      {/* Toast Notification */}
       <Toast message={toastMessage} isVisible={isToastVisible} />
     </div>
   );

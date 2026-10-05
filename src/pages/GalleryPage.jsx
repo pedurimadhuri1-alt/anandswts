@@ -1,187 +1,210 @@
-import React, { useState } from 'react';
-import { ZoomIn, X } from 'lucide-react';
+import React, { useMemo, useState } from 'react';
+import {
+  AtSign,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone,
+} from 'lucide-react';
+import PageHero from '../components/PageHero';
+import { FacebookIcon, InstagramIcon } from '../components/SocialLogos';
+import { STORE_INFO, SWEETS_DATA } from '../data/sweetsData';
 
-export default function GalleryPage() {
+const galleryItems = [
+  { id: 'kaja', name: 'Anand Kaja', telugu: 'ఆనంద్ కాజా', category: 'sweets', image: '/images/anand_kaja.png', fit: 'cover' },
+  { id: 'pootharekulu', name: 'Pootharekulu', telugu: 'పూతరేకులు', category: 'sweets', image: '/images/pootharekulu.png', fit: 'contain' },
+  { id: 'sunnundalu', name: 'Sunnundalu', telugu: 'సున్నుండలు', category: 'sweets', image: '/images/sunnudalu.jpg', fit: 'cover' },
+  { id: 'ariselu', name: 'Ariselu', telugu: 'అరిసెలు', category: 'sweets', image: '/images/ariselu.png', fit: 'cover' },
+  { id: 'mysore-pak', name: 'Mysore Pak', telugu: 'మైసూర్ పాక్', category: 'sweets', image: '/images/mysure.jpg', fit: 'cover' },
+  { id: 'mysore-pak-box', name: 'Mysore Pak', telugu: 'మైసూర్ పాక్', category: 'sweets', image: '/images/misure.jpeg', fit: 'cover' },
+  { id: 'kaja-selection', name: 'Kaja Selection', telugu: 'కాజా మిఠాయిలు', category: 'sweets', image: '/images/kaja.jpeg', fit: 'cover' },
+  { id: 'sweet-assortment', name: 'Sweet Assortment', telugu: 'సంప్రదాయ మిఠాయిలు', category: 'sweets', image: '/images/all sweets.jpeg', fit: 'cover' },
+  { id: 'sweet-display', name: 'Sweet Selection', telugu: 'తీపి వంటకాలు', category: 'sweets', image: '/images/specia.jpeg', fit: 'cover' },
+  { id: 'sweet-box', name: 'Celebration Sweets', telugu: 'వేడుకల మిఠాయిలు', category: 'sweets', image: '/images/swee.jpeg', fit: 'cover' },
+  { id: 'sweets-selection', name: 'Traditional Sweets', telugu: 'సాంప్రదాయ స్వీట్లు', category: 'sweets', image: '/images/sweets.jpeg', fit: 'cover' },
+  { id: 'chekkalu', name: 'Chekkalu', telugu: 'చెక్కలు', category: 'savouries', image: '/images/chekkalu.jpg', fit: 'cover' },
+  { id: 'mixture', name: 'Andhra Mixture', telugu: 'ఆంధ్ర మిక్చర్', category: 'savouries', image: '/images/mixcture.jpg', fit: 'cover' },
+  { id: 'savoury-mix', name: 'Savoury Mix', telugu: 'కారం మిశ్రమం', category: 'savouries', image: '/images/mixc.jpeg', fit: 'cover' },
+  { id: 'snack-mix', name: 'Tea-Time Savouries', telugu: 'సాయంత్రం చిరుతిళ్లు', category: 'savouries', image: '/images/mixed.jpeg', fit: 'cover' },
+  { id: 'snack-selection', name: 'Savoury Selection', telugu: 'కారం వంటకాలు', category: 'savouries', image: '/images/seww.jpeg', fit: 'cover' },
+  { id: 'tea-time', name: 'Tea-Time Treats', telugu: 'టీ సమయపు చిరుతిళ్లు', category: 'savouries', image: '/images/Tea_Time_Snacks_2.webp', fit: 'cover' },
+  { id: 'snack-box', name: 'Snack Selection', telugu: 'చిరుతిళ్ల ఎంపిక', category: 'savouries', image: '/images/swees.jpeg', fit: 'cover' },
+  { id: 'gift-hamper', name: 'Gift Hamper', telugu: 'బహుమతి బుట్ట', category: 'gift-boxes', image: '/images/gift_baskets.jpg', fit: 'cover' },
+  { id: 'gift-box', name: 'Sweet Gift Box', telugu: 'మిఠాయిల బహుమతి పెట్టె', category: 'gift-boxes', image: '/images/custom_gift_box.png', fit: 'cover' },
+  { id: 'wooden-box', name: 'Traditional Gift Box', telugu: 'సంప్రదాయ బహుమతి పెట్టె', category: 'gift-boxes', image: '/images/wooden_gift_box.jpg', fit: 'cover' },
+  { id: 'festival', name: 'Festival Celebration', telugu: 'పండుగ సంబరాలు', category: 'festivals', image: '/images/festival_family.png', fit: 'cover' },
+  { id: 'ugadi', name: 'Ugadi Sweets', telugu: 'ఉగాది మిఠాయిలు', category: 'festivals', image: '/images/ugadhi.jpg', fit: 'cover' },
+  { id: 'celebration-photo', name: 'Festive Moments', telugu: 'పండుగ ఆనందాలు', category: 'festivals', image: '/images/WhatsApp Image 2026-10-03 at 9.12.08 AM.jpeg', fit: 'cover' },
+  { id: 'family', name: 'Family Sweet Moments', telugu: 'కుటుంబ మధుర క్షణాలు', category: 'family', image: '/images/family_eating_sweets.jpg', fit: 'cover' },
+  { id: 'celebration-family', name: 'Family Celebration', telugu: 'కుటుంబ వేడుక', category: 'family', image: '/images/festival_family.png', fit: 'cover' },
+  { id: 'godavari', name: 'Godavari Heritage', telugu: 'గోదావరి వారసత్వం', category: 'family', image: '/images/godavari_bridge.png', fit: 'cover' },
+  { id: 'sweet-making', name: 'Sweet Making', telugu: 'మిఠాయిల తయారీ', category: 'traditional', image: '/images/sweet_kitchen.jpg', fit: 'cover' },
+  { id: 'sweet-tradition', name: 'Anand Sweets', telugu: 'ఆనంద్ స్వీట్స్', category: 'traditional', image: '/images/hero_sweets.png', fit: 'cover' },
+  { id: 'store', name: 'Anand Sweets Store', telugu: 'ఆనంద్ స్వీట్స్ దుకాణం', category: 'traditional', image: '/images/home.png', fit: 'cover' },
+];
+
+const filters = [
+  { id: 'all', label: 'All' },
+  { id: 'sweets', label: 'Sweets' },
+  { id: 'savouries', label: 'Savouries' },
+  { id: 'gift-boxes', label: 'Gift Boxes' },
+  { id: 'festivals', label: 'Festivals' },
+  { id: 'family', label: 'Family Celebrations' },
+  { id: 'traditional', label: 'Traditional' },
+];
+
+const videos = [
+  { id: 'ravva-laddu', title: 'Ravva Laddu', src: '/images/ravvaladdu.mp4', poster: '/images/ariselu.png' },
+  { id: 'gulab-jamun', title: 'Gulab Jamun', src: '/images/gulabjamv.mp4', poster: '/images/mysure.jpg' },
+  { id: 'sweet-tradition', title: 'Sweet Making Tradition', src: '/images/tradition.mp4', poster: '/images/sweet_kitchen.jpg' },
+  { id: 'sweet-moments', title: 'Sweet Moments', src: '/images/sweets.mp4', poster: '/images/hero_sweets.png' },
+  { id: 'sweet-preparation', title: 'Fresh Preparation', src: '/images/pack.mp4', poster: '/images/custom_gift_box.png' },
+  { id: 'family-memory', title: 'Family Memories', src: '/images/memory.mp4', poster: '/images/family_eating_sweets.jpg' },
+  { id: 'celebration-film', title: 'Celebration Moments', src: '/images/స్క్రీన్ రికార్డింగ్ 2026-09-29 155642.mp4', poster: '/images/festival_family.png' },
+];
+
+const contactLinks = [
+  { label: 'Facebook', icon: FacebookIcon, href: STORE_INFO.facebookUrl },
+  { label: 'Instagram', icon: InstagramIcon, href: STORE_INFO.instagramUrl },
+  { label: 'WhatsApp', icon: MessageCircle, href: `https://wa.me/${STORE_INFO.whatsappNumber}` },
+  { label: 'Call', icon: Phone, href: `tel:${STORE_INFO.phone}` },
+  { label: 'Email', icon: Mail, href: `mailto:${STORE_INFO.email}` },
+  { label: 'Gmail', icon: AtSign, href: `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(STORE_INFO.email)}`, external: true },
+  { label: 'Google Maps', icon: MapPin, href: STORE_INFO.googleMapsUrl, external: true },
+];
+
+export default function GalleryPage({
+  onToggleWishlist,
+  wishlistIds = [],
+}) {
   const [filter, setFilter] = useState('all');
-  const [lightboxImg, setLightboxImg] = useState(null);
-
-  const galleryItems = [
-    { id: 1, title: 'Happy Diwali & Telugu Festivities', category: 'festival', image: '/images/festive_family.jpg', desc: 'Vibrant Telugu family sweet celebration with lights & diyas' },
-    { id: 2, title: 'Family Sweet Moments', category: 'family', image: '/images/family_eating_sweets.jpg', desc: 'Family members feeding each other traditional sweets' },
-    { id: 3, title: 'Royal Gift Baskets & Hampers', category: 'wedding', image: '/images/gift_baskets.jpg', desc: 'Luxury sweet gift baskets wrapped with ribbons' },
-    { id: 4, title: 'Laser-Cut Wooden Sweet Box', category: 'wedding', image: '/images/wooden_gift_box.jpg', desc: 'Handcrafted luxury wooden sweet hamper' },
-    { id: 5, title: 'Hygienic Sweet Kitchen', category: 'store', image: '/images/sweet_kitchen.jpg', desc: 'Master sweet chefs preparing fresh sweets daily' },
-    { id: 6, title: 'Ugadi Celebrations', category: 'festival', image: '/images/pootharekulu.png', desc: 'Traditional Ugadi sweet festival' },
-    { id: 7, title: 'Our Sweet Store', category: 'store', image: '/images/hero_sweets.png', desc: 'Anand Sweets Rajahmundry boutique counter' },
-    { id: 8, title: 'Godavari Arch - Rajahmundry', category: 'family', image: '/images/godavari_bridge.png', desc: 'Sacred river Godavari reflections' }
-  ];
-
-  const filtered = filter === 'all'
-    ? galleryItems
-    : galleryItems.filter(item => item.category === filter);
+  const featuredSweet = SWEETS_DATA.find((sweet) => sweet.id === 'sunnundalu');
+  const filteredItems = useMemo(
+    () => filter === 'all' ? galleryItems : galleryItems.filter((item) => item.category === filter),
+    [filter],
+  );
 
   return (
-    <div className="animate-fade-in">
-      {/* 1. Gallery Header Banner */}
-      <section style={{
-        background: 'linear-gradient(90deg, rgba(61, 8, 16, 0.9), rgba(94, 15, 26, 0.75)), url("/images/festive_family.jpg")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        color: '#ffffff',
-        padding: '70px 0',
-        textAlign: 'center'
-      }}>
-        <div className="container">
-          <span className="section-subtitle" style={{ color: '#d4a017' }}>Sweet Memories</span>
-          <h1 style={{ fontSize: 'clamp(32px, 5vw, 54px)', color: '#ffffff', marginBottom: '8px' }}>
-            Our Gallery & Festival Moments
-          </h1>
-          <p style={{ color: '#fff8e8', fontSize: '16px', maxWidth: '600px', margin: '0 auto' }}>
-            Moments, Celebrations, and Memories Made Sweeter
-          </p>
-        </div>
-      </section>
+    <div className="gallery-page">
+      <PageHero
+        variant="gallery"
+        image="/images/hero_sweets.png"
+        imageAlt="Traditional Anand Sweets arranged for a family celebration"
+        eyebrow="ANAND SWEETS • RAJAHMUNDRY"
+        title="Anand Sweets"
+        subtitle="Sweet Moments • Traditional Memories"
+      />
 
-      {/* 2. Gallery Filter & Grid */}
-      <section className="section" style={{ background: '#fbf5e8' }}>
+      <section className="gallery-content section">
         <div className="container">
-          {/* Category Filter Pills */}
-          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '35px' }}>
-            {[
-              { id: 'all', label: 'All Photos' },
-              { id: 'festival', label: 'Festivals' },
-              { id: 'wedding', label: 'Weddings & Gifts' },
-              { id: 'family', label: 'Family Moments' },
-              { id: 'store', label: 'Store & Kitchen' }
-            ].map(btn => (
+          <header className="gallery-heading">
+            <span className="section-subtitle">A glimpse of our traditions</span>
+            <h2>Sweet Moments, Cherished Forever</h2>
+            <div className="gold-divider"><span /><span className="divider-mark">✦</span><span /></div>
+          </header>
+
+          <div className="gallery-filter-list" role="group" aria-label="Filter gallery photos">
+            {filters.map((item) => (
               <button
-                key={btn.id}
-                onClick={() => setFilter(btn.id)}
-                style={{
-                  padding: '9px 22px',
-                  borderRadius: '50px',
-                  fontSize: '13px',
-                  fontWeight: 700,
-                  cursor: 'pointer',
-                  border: filter === btn.id ? 'none' : '1px solid rgba(94, 15, 26, 0.15)',
-                  background: filter === btn.id ? '#5e0f1a' : '#ffffff',
-                  color: filter === btn.id ? '#d4a017' : '#2d2020',
-                  boxShadow: filter === btn.id ? '0 6px 16px rgba(94, 15, 26, 0.2)' : 'none'
-                }}
+                key={item.id}
+                type="button"
+                className={`gallery-filter${filter === item.id ? ' is-active' : ''}`}
+                aria-pressed={filter === item.id}
+                onClick={() => setFilter(item.id)}
               >
-                {btn.label}
+                {item.label}
               </button>
             ))}
           </div>
 
-          {/* Grid */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-            gap: '20px'
-          }}>
-            {filtered.map((item) => (
-              <div
-                key={item.id}
-                onClick={() => setLightboxImg(item)}
-                style={{
-                  height: '240px',
-                  borderRadius: '18px',
-                  overflow: 'hidden',
-                  position: 'relative',
-                  cursor: 'pointer',
-                  boxShadow: '0 8px 20px rgba(0,0,0,0.06)'
-                }}
-              >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease' }}
-                  onMouseEnter={(e) => (e.target.style.transform = 'scale(1.08)')}
-                  onMouseLeave={(e) => (e.target.style.transform = 'scale(1)')}
-                />
-                <div style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background: 'linear-gradient(to top, rgba(61, 8, 16, 0.85), transparent)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'flex-end',
-                  padding: '16px',
-                  color: '#ffffff'
-                }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontWeight: 700, fontSize: '15px', color: '#f1cf68' }}>{item.title}</span>
-                    <ZoomIn size={16} style={{ color: '#d4a017' }} />
-                  </div>
-                  <small style={{ color: '#ddd', fontSize: '11px', marginTop: '2px' }}>{item.desc}</small>
+          <div className="gallery-grid">
+            {filteredItems.map((item) => (
+              <figure className="gallery-card" key={item.id}>
+                <div className="gallery-card-image">
+                  <img
+                    src={encodeURI(item.image)}
+                    alt={`${item.name} — ${item.telugu}`}
+                    loading="lazy"
+                    style={{ objectFit: item.fit }}
+                  />
                 </div>
-              </div>
+                <figcaption>
+                  <span>{item.name}</span>
+                  <span className="telugu-font">{item.telugu}</span>
+                </figcaption>
+              </figure>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 3. Dark Maroon Telugu Banner */}
-      <section className="container" style={{ marginBottom: '40px' }}>
-        <div className="telugu-maroon-banner" style={{ textAlign: 'center' }}>
-          <h2 className="telugu-font" style={{ fontSize: 'clamp(26px, 4vw, 44px)', color: '#d4a017', marginBottom: '8px' }}>
-            ప్రతి ముద్దలో సంతృప్తి • ప్రతి వేడుకలో ఆనందం
-          </h2>
-          <p style={{ color: '#fff8e8', fontSize: '14px' }}>
-            Bringing families together in Rajahmundry with sweet memories.
-          </p>
+      {featuredSweet && (
+        <section className="gallery-featured">
+          <div className="container gallery-featured-inner">
+            <div className="gallery-featured-image">
+              <img src={featuredSweet.image} alt="Sunnundalu laddu made with traditional ingredients" loading="lazy" />
+            </div>
+            <div className="gallery-featured-copy">
+              <span className="section-subtitle">A traditional favourite</span>
+              <h2>Laddu</h2>
+              <p className="telugu-font">లడ్డూ</p>
+              <button
+                className={`gallery-featured-wishlist${wishlistIds.includes(featuredSweet.id) ? ' is-active' : ''}`}
+                type="button"
+                onClick={() => onToggleWishlist?.(featuredSweet.id)}
+                aria-pressed={wishlistIds.includes(featuredSweet.id)}
+              >
+                {wishlistIds.includes(featuredSweet.id) ? 'Remove from Wishlist' : 'Add to Wishlist'}
+              </button>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className="gallery-video-section">
+        <div className="container">
+          <header className="gallery-heading">
+            <span className="section-subtitle">From our kitchen</span>
+            <h2>Sweet Moments in Motion</h2>
+            <p>Tradition, celebration and happiness — captured beautifully.</p>
+          </header>
+          <div className="gallery-video-grid">
+            {videos.map((video) => (
+              <article className="gallery-video-card" key={video.id}>
+                <video controls playsInline preload="metadata" poster={video.poster} aria-label={video.title}>
+                  <source src={encodeURI(video.src)} type="video/mp4" />
+                  Your browser does not support video playback.
+                </video>
+                <h3>{video.title}</h3>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Lightbox Modal */}
-      {lightboxImg && (
-        <div style={{
-          position: 'fixed',
-          inset: 0,
-          zIndex: 1000,
-          background: 'rgba(0,0,0,0.85)',
-          backdropFilter: 'blur(8px)',
-          display: 'grid',
-          placeItems: 'center',
-          padding: '20px'
-        }} onClick={() => setLightboxImg(null)}>
-          <div style={{
-            maxWidth: '750px',
-            width: '100%',
-            background: '#3d0810',
-            borderRadius: '20px',
-            overflow: 'hidden',
-            border: '2px solid #d4a017',
-            position: 'relative'
-          }} onClick={(e) => e.stopPropagation()}>
-            <button
-              onClick={() => setLightboxImg(null)}
-              style={{
-                position: 'absolute',
-                top: '14px',
-                right: '14px',
-                background: '#d4a017',
-                color: '#3d0810',
-                border: 'none',
-                borderRadius: '50%',
-                width: '34px',
-                height: '34px',
-                cursor: 'pointer',
-                display: 'grid',
-                placeItems: 'center'
-              }}
-            >
-              <X size={18} />
-            </button>
-            <img src={lightboxImg.image} alt={lightboxImg.title} style={{ width: '100%', maxHeight: '480px', objectFit: 'cover' }} />
-            <div style={{ padding: '18px', color: '#ffffff', textAlign: 'center' }}>
-              <h3 style={{ color: '#d4a017', fontSize: '20px', margin: 0 }}>{lightboxImg.title}</h3>
-              <p style={{ color: '#fff8e8', fontSize: '14px', marginTop: '4px' }}>{lightboxImg.desc}</p>
-            </div>
+      <section className="gallery-connect">
+        <div className="container">
+          <header className="gallery-heading">
+            <span className="section-subtitle">We would love to hear from you</span>
+            <h2>Connect With Anand Sweets</h2>
+          </header>
+          <div className="gallery-contact-grid">
+            {contactLinks.map(({ label, icon: Icon, href, external }) => (
+              <a
+                className="gallery-contact-card"
+                href={href}
+                key={label}
+                target={external ? '_blank' : undefined}
+                rel={external ? 'noreferrer' : undefined}
+                aria-label={label}
+              >
+                <Icon size={21} strokeWidth={1.8} />
+                <span>{label}</span>
+              </a>
+            ))}
           </div>
         </div>
-      )}
+      </section>
     </div>
   );
 }

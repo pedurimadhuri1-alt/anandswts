@@ -5,9 +5,9 @@ import { SWEETS_DATA, STORE_INFO } from '../data/sweetsData';
 
 export default function BoxBuilder({ onAddToCart }) {
   const boxSizes = [
-    { id: '500g', label: '500g Gift Box', totalGrams: 500, boxPrice: 50 },
-    { id: '1kg', label: '1 Kg Assorted Box', totalGrams: 1000, boxPrice: 80 },
-    { id: '2kg', label: '2 Kg Royal Celebration Box', totalGrams: 2000, boxPrice: 120 }
+    { id: '500g', label: '500g Gift Box', totalGrams: 500 },
+    { id: '1kg', label: '1 Kg Assorted Box', totalGrams: 1000 },
+    { id: '2kg', label: '2 Kg Royal Celebration Box', totalGrams: 2000 }
   ];
 
   const [selectedBox, setSelectedBox] = useState(boxSizes[1]); // Default 1kg box
@@ -18,15 +18,6 @@ export default function BoxBuilder({ onAddToCart }) {
   const currentFilledGrams = Object.values(selectedItems).reduce((sum, g) => sum + g, 0);
   const remainingGrams = selectedBox.totalGrams - currentFilledGrams;
   const fillPercentage = Math.min(100, Math.round((currentFilledGrams / selectedBox.totalGrams) * 100));
-
-  // Calculate total price of box
-  const itemsPrice = Object.entries(selectedItems).reduce((total, [sweetId, grams]) => {
-    const sweet = SWEETS_DATA.find(s => s.id === sweetId);
-    if (!sweet) return total;
-    return total + (sweet.pricePerKg * (grams / 1000));
-  }, 0);
-
-  const totalPrice = Math.round(itemsPrice + selectedBox.boxPrice);
 
   const handleAddItem = (sweetId) => {
     const increment = 250;
@@ -74,7 +65,6 @@ export default function BoxBuilder({ onAddToCart }) {
       id: `custom-box-${Date.now()}`,
       name: `Custom Anand Box (${selectedBox.label})`,
       teluguName: `ఆనంద్ గిఫ్ట్ బాక్స్`,
-      pricePerKg: totalPrice,
       image: '/images/custom_gift_box.png',
       description: `Includes: ${itemDetails}. Occasion: ${occasion}. Note: ${customNote || 'None'}`
     };
@@ -96,14 +86,14 @@ export default function BoxBuilder({ onAddToCart }) {
       `*Occasion:* ${occasion}\n` +
       `*Contents:*\n${itemsSummary}\n` +
       `*Greeting Note:* ${customNote || 'Best Wishes!'}\n` +
-      `*Estimated Price:* ₹${totalPrice}\n\n` +
+      `\n` +
       `Please confirm my box order & delivery slot!`;
 
     window.open(`https://wa.me/${STORE_INFO.whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   return (
-    <section id="box-builder" className="section" style={{ background: '#fffbeb' }}>
+    <section id="box-builder" className="section" style={{ background: '#FFFDF8' }}>
       <div className="container">
         <div className="section-title">
           <span className="section-subtitle">Interactive Feature</span>
@@ -118,11 +108,11 @@ export default function BoxBuilder({ onAddToCart }) {
           alignItems: 'start'
         }}>
           {/* Left Column: Configurator Steps */}
-          <div style={{ background: '#ffffff', padding: '30px', borderRadius: '24px', boxShadow: '0 10px 30px rgba(0,0,0,0.06)', border: '1px solid rgba(94, 15, 26, 0.08)' }}>
+          <div style={{ background: '#ffffff', padding: '30px', borderRadius: '24px', boxShadow: '0 10px 30px rgba(0,0,0,0.06)', border: '1px solid rgba(51, 45, 37, 0.08)' }}>
             {/* Step 1: Select Box Size */}
             <div style={{ marginBottom: '28px' }}>
-              <h3 style={{ fontSize: '18px', color: '#5e0f1a', marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Gift size={20} style={{ color: '#d4a017' }} />
+              <h3 style={{ fontSize: '18px', color: '#332D25', marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Gift size={20} style={{ color: '#B49A54' }} />
                 <span>Step 1: Choose Box Size</span>
               </h3>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
@@ -136,9 +126,9 @@ export default function BoxBuilder({ onAddToCart }) {
                     style={{
                       padding: '14px 10px',
                       borderRadius: '16px',
-                      border: selectedBox.id === box.id ? '2px solid #5e0f1a' : '1px solid rgba(94, 15, 26, 0.15)',
-                      background: selectedBox.id === box.id ? '#5e0f1a' : '#fffbeb',
-                      color: selectedBox.id === box.id ? '#d4a017' : '#2d2020',
+                      border: selectedBox.id === box.id ? '2px solid #332D25' : '1px solid rgba(51, 45, 37, 0.15)',
+                      background: selectedBox.id === box.id ? '#332D25' : '#FFFDF8',
+                      color: selectedBox.id === box.id ? '#B49A54' : '#332D25',
                       textAlign: 'center',
                       cursor: 'pointer',
                       transition: 'all 0.2s ease'
@@ -153,26 +143,26 @@ export default function BoxBuilder({ onAddToCart }) {
 
             {/* Step 2: Capacity Progress Bar */}
             <div style={{ marginBottom: '28px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', fontWeight: 700, color: '#5e0f1a', marginBottom: '8px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', fontWeight: 700, color: '#332D25', marginBottom: '8px' }}>
                 <span>Box Filling Status:</span>
                 <span>{currentFilledGrams}g / {selectedBox.totalGrams}g ({fillPercentage}%)</span>
               </div>
 
-              <div style={{ height: '14px', background: '#f4ead2', borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
+              <div style={{ height: '14px', background: '#F5F0E2', borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
                 <div style={{
                   height: '100%',
                   width: `${fillPercentage}%`,
-                  background: fillPercentage === 100 ? 'linear-gradient(90deg, #27ae60, #2ecc71)' : 'linear-gradient(90deg, #d4a017, #5e0f1a)',
+                  background: fillPercentage === 100 ? 'linear-gradient(90deg, #B49A54, #B49A54)' : 'linear-gradient(90deg, #B49A54, #332D25)',
                   transition: 'width 0.3s ease'
                 }} />
               </div>
 
               {remainingGrams > 0 ? (
-                <small style={{ color: '#746565', fontSize: '12px', marginTop: '6px', display: 'block' }}>
+                <small style={{ color: '#6B6255', fontSize: '12px', marginTop: '6px', display: 'block' }}>
                   Add <strong>{remainingGrams}g</strong> more sweets to complete your box!
                 </small>
               ) : (
-                <small style={{ color: '#27ae60', fontSize: '12px', fontWeight: 700, marginTop: '6px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <small style={{ color: '#B49A54', fontSize: '12px', fontWeight: 700, marginTop: '6px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   <CheckCircle size={14} /> Your Anand Gift Box is 100% full & perfectly packed!
                 </small>
               )}
@@ -180,8 +170,8 @@ export default function BoxBuilder({ onAddToCart }) {
 
             {/* Step 3: Pick Sweets to Fill */}
             <div style={{ marginBottom: '28px' }}>
-              <h3 style={{ fontSize: '18px', color: '#5e0f1a', marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Sparkles size={20} style={{ color: '#d4a017' }} />
+              <h3 style={{ fontSize: '18px', color: '#332D25', marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Sparkles size={20} style={{ color: '#B49A54' }} />
                 <span>Step 2: Select Sweets (250g increments)</span>
               </h3>
 
@@ -196,16 +186,15 @@ export default function BoxBuilder({ onAddToCart }) {
                         alignItems: 'center',
                         justifyContent: 'space-between',
                         padding: '10px 14px',
-                        background: '#fff7df',
+                        background: '#FFFDF8',
                         borderRadius: '12px',
-                        border: '1px solid rgba(94, 15, 26, 0.08)'
+                        border: '1px solid rgba(51, 45, 37, 0.08)'
                       }}
                     >
                       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                         <img src={sweet.image} alt={sweet.name} style={{ width: '42px', height: '42px', borderRadius: '8px', objectFit: 'cover' }} />
                         <div>
-                          <div style={{ fontWeight: 700, fontSize: '14px', color: '#5e0f1a' }}>{sweet.name}</div>
-                          <div style={{ fontSize: '11px', color: '#746565' }}>₹{sweet.pricePerKg}/kg</div>
+                          <div style={{ fontWeight: 700, fontSize: '14px', color: '#332D25' }}>{sweet.name}</div>
                         </div>
                       </div>
 
@@ -217,9 +206,9 @@ export default function BoxBuilder({ onAddToCart }) {
                             width: '28px',
                             height: '28px',
                             borderRadius: '50%',
-                            border: '1px solid #5e0f1a',
+                            border: '1px solid #332D25',
                             background: '#ffffff',
-                            color: '#5e0f1a',
+                            color: '#332D25',
                             cursor: qtyGrams === 0 ? 'not-allowed' : 'pointer',
                             opacity: qtyGrams === 0 ? 0.4 : 1,
                             display: 'grid',
@@ -229,7 +218,7 @@ export default function BoxBuilder({ onAddToCart }) {
                           <Minus size={14} />
                         </button>
 
-                        <span style={{ fontWeight: 800, fontSize: '13px', width: '40px', textAlign: 'center', color: '#5e0f1a' }}>
+                        <span style={{ fontWeight: 800, fontSize: '13px', width: '40px', textAlign: 'center', color: '#332D25' }}>
                           {qtyGrams > 0 ? `${qtyGrams}g` : '0g'}
                         </span>
 
@@ -241,8 +230,8 @@ export default function BoxBuilder({ onAddToCart }) {
                             height: '28px',
                             borderRadius: '50%',
                             border: 'none',
-                            background: '#5e0f1a',
-                            color: '#d4a017',
+                            background: '#332D25',
+                            color: '#B49A54',
                             cursor: remainingGrams < 250 ? 'not-allowed' : 'pointer',
                             opacity: remainingGrams < 250 ? 0.4 : 1,
                             display: 'grid',
@@ -260,13 +249,13 @@ export default function BoxBuilder({ onAddToCart }) {
 
             {/* Step 4: Greeting Note & Occasion */}
             <div>
-              <h3 style={{ fontSize: '18px', color: '#5e0f1a', marginBottom: '14px' }}>
+              <h3 style={{ fontSize: '18px', color: '#332D25', marginBottom: '14px' }}>
                 Step 3: Personalization & Greeting Card
               </h3>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 <div>
-                  <label style={{ fontSize: '12px', fontWeight: 700, color: '#5e0f1a', display: 'block', marginBottom: '4px' }}>
+                  <label style={{ fontSize: '12px', fontWeight: 700, color: '#332D25', display: 'block', marginBottom: '4px' }}>
                     Select Occasion Tag:
                   </label>
                   <select
@@ -276,7 +265,7 @@ export default function BoxBuilder({ onAddToCart }) {
                       width: '100%',
                       padding: '10px 14px',
                       borderRadius: '10px',
-                      border: '1px solid rgba(94, 15, 26, 0.2)',
+                      border: '1px solid rgba(51, 45, 37, 0.2)',
                       fontSize: '13px',
                       fontWeight: 600,
                       outline: 'none',
@@ -292,7 +281,7 @@ export default function BoxBuilder({ onAddToCart }) {
                 </div>
 
                 <div>
-                  <label style={{ fontSize: '12px', fontWeight: 700, color: '#5e0f1a', display: 'block', marginBottom: '4px' }}>
+                  <label style={{ fontSize: '12px', fontWeight: 700, color: '#332D25', display: 'block', marginBottom: '4px' }}>
                     Custom Greeting Note (Printed inside box):
                   </label>
                   <textarea
@@ -304,7 +293,7 @@ export default function BoxBuilder({ onAddToCart }) {
                       width: '100%',
                       padding: '10px 14px',
                       borderRadius: '10px',
-                      border: '1px solid rgba(94, 15, 26, 0.2)',
+                      border: '1px solid rgba(51, 45, 37, 0.2)',
                       fontSize: '13px',
                       outline: 'none',
                       fontFamily: 'inherit',
@@ -318,12 +307,12 @@ export default function BoxBuilder({ onAddToCart }) {
 
           {/* Right Column: Live Box Summary & Royal Preview */}
           <div style={{
-            background: 'linear-gradient(135deg, #3d0810, #5e0f1a)',
+            background: 'linear-gradient(135deg, #241F1A, #332D25)',
             color: '#ffffff',
             padding: '35px',
             borderRadius: '24px',
-            boxShadow: '0 20px 45px rgba(63, 18, 18, 0.25)',
-            border: '2px solid #d4a017',
+            boxShadow: '0 20px 45px rgba(51, 45, 37, 0.25)',
+            border: '2px solid #B49A54',
             position: 'sticky',
             top: '100px'
           }}>
@@ -332,18 +321,18 @@ export default function BoxBuilder({ onAddToCart }) {
                 width: '60px',
                 height: '60px',
                 borderRadius: '50%',
-                background: '#d4a017',
-                color: '#3d0810',
+                background: '#B49A54',
+                color: '#241F1A',
                 display: 'grid',
                 placeItems: 'center',
                 margin: '0 auto 12px'
               }}>
                 <Gift size={30} />
               </div>
-              <h3 style={{ fontSize: '22px', color: '#d4a017', marginBottom: '4px' }}>
+              <h3 style={{ fontSize: '22px', color: '#B49A54', marginBottom: '4px' }}>
                 Your Royal Box Summary
               </h3>
-              <p style={{ fontSize: '13px', color: '#f1cf68' }}>
+              <p style={{ fontSize: '13px', color: '#D7C58F' }}>
                 {selectedBox.label} ({occasion})
               </p>
             </div>
@@ -356,12 +345,12 @@ export default function BoxBuilder({ onAddToCart }) {
               marginBottom: '24px',
               border: '1px solid rgba(255, 255, 255, 0.12)'
             }}>
-              <div style={{ fontSize: '12px', fontWeight: 700, color: '#d4a017', textTransform: 'uppercase', marginBottom: '10px' }}>
+              <div style={{ fontSize: '12px', fontWeight: 700, color: '#B49A54', textTransform: 'uppercase', marginBottom: '10px' }}>
                 Box Contents ({currentFilledGrams}g):
               </div>
 
               {Object.keys(selectedItems).length === 0 ? (
-                <div style={{ color: '#ddd', fontSize: '13px', fontStyle: 'italic', textAlign: 'center', padding: '10px 0' }}>
+                <div style={{ color: '#D7C9A5', fontSize: '13px', fontStyle: 'italic', textAlign: 'center', padding: '10px 0' }}>
                   No sweets added yet. Click + next to sweets to fill your box!
                 </div>
               ) : (
@@ -369,9 +358,9 @@ export default function BoxBuilder({ onAddToCart }) {
                   {Object.entries(selectedItems).map(([id, grams]) => {
                     const s = SWEETS_DATA.find(sw => sw.id === id);
                     return (
-                      <li key={id} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', color: '#fff8e8' }}>
+                      <li key={id} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', color: '#FFFDF8' }}>
                         <span>• {s.name}</span>
-                        <span style={{ fontWeight: 700, color: '#f1cf68' }}>{grams}g</span>
+                        <span style={{ fontWeight: 700, color: '#D7C58F' }}>{grams}g</span>
                       </li>
                     );
                   })}
@@ -379,20 +368,8 @@ export default function BoxBuilder({ onAddToCart }) {
               )}
             </div>
 
-            {/* Pricing Details */}
-            <div style={{ borderTop: '1px solid rgba(255,255,255,0.15)', paddingTop: '16px', marginBottom: '24px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', color: '#ddd', marginBottom: '6px' }}>
-                <span>Sweets Total:</span>
-                <span>₹{Math.round(itemsPrice)}</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', color: '#ddd', marginBottom: '12px' }}>
-                <span>Custom Foil Box & Packaging:</span>
-                <span>₹{selectedBox.boxPrice}</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '24px', fontWeight: 800, color: '#d4a017' }}>
-                <span>Total Box Price:</span>
-                <span>₹{totalPrice}</span>
-              </div>
+            <div style={{ borderTop: '1px solid rgba(255,255,255,0.15)', paddingTop: '16px', marginBottom: '24px', color: '#D7C58F', fontSize: '13px' }}>
+              Your custom gift box is ready to add to cart.
             </div>
 
             {/* Actions */}

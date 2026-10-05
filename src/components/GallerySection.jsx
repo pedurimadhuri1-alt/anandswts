@@ -11,7 +11,7 @@ export default function GallerySection() {
     : GALLERY_DATA.filter(item => item.category === filter);
 
   return (
-    <section id="gallery" className="section" style={{ background: '#fff7df' }}>
+    <section id="gallery" className="section" style={{ background: '#FFFDF8' }}>
       <div className="container">
         <div className="section-title">
           <span className="section-subtitle">Sweet Memories</span>
@@ -43,9 +43,9 @@ export default function GallerySection() {
                 fontSize: '13px',
                 fontWeight: 700,
                 cursor: 'pointer',
-                border: filter === btn.id ? 'none' : '1px solid rgba(94, 15, 26, 0.15)',
-                background: filter === btn.id ? '#5e0f1a' : '#ffffff',
-                color: filter === btn.id ? '#d4a017' : '#2d2020',
+                border: filter === btn.id ? 'none' : '1px solid rgba(51, 45, 37, 0.15)',
+                background: filter === btn.id ? '#332D25' : '#ffffff',
+                color: filter === btn.id ? '#B49A54' : '#332D25',
                 transition: 'all 0.25s ease'
               }}
             >
@@ -88,7 +88,7 @@ export default function GallerySection() {
               <div style={{
                 position: 'absolute',
                 inset: 0,
-                background: 'linear-gradient(to top, rgba(61, 8, 16, 0.85), transparent)',
+                background: 'linear-gradient(to top, rgba(36, 31, 26, 0.85), transparent)',
                 opacity: 0.9,
                 display: 'flex',
                 flexDirection: 'column',
@@ -97,10 +97,10 @@ export default function GallerySection() {
                 color: '#ffffff'
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <span style={{ fontWeight: 700, fontSize: '15px', color: '#f1cf68' }}>{item.title}</span>
-                  <ZoomIn size={18} style={{ color: '#d4a017' }} />
+                  <span style={{ fontWeight: 700, fontSize: '15px', color: '#D7C58F' }}>{item.title}</span>
+                  <ZoomIn size={18} style={{ color: '#B49A54' }} />
                 </div>
-                <small style={{ color: '#ddd', fontSize: '11px', marginTop: '2px' }}>{item.caption}</small>
+                <small style={{ color: '#D7C9A5', fontSize: '11px', marginTop: '2px' }}>{item.caption}</small>
               </div>
             </div>
           ))}
@@ -122,10 +122,10 @@ export default function GallerySection() {
           <div style={{
             maxWidth: '800px',
             width: '100%',
-            background: '#3d0810',
+            background: '#241F1A',
             borderRadius: '20px',
             overflow: 'hidden',
-            border: '2px solid #d4a017',
+            border: '2px solid #B49A54',
             position: 'relative'
           }} onClick={(e) => e.stopPropagation()}>
             <button
@@ -134,8 +134,8 @@ export default function GallerySection() {
                 position: 'absolute',
                 top: '14px',
                 right: '14px',
-                background: '#d4a017',
-                color: '#3d0810',
+                background: '#B49A54',
+                color: '#241F1A',
                 border: 'none',
                 borderRadius: '50%',
                 width: '36px',
@@ -150,8 +150,8 @@ export default function GallerySection() {
             </button>
             <img src={lightboxImage.image} alt={lightboxImage.title} style={{ width: '100%', maxHeight: '500px', objectFit: 'cover' }} />
             <div style={{ padding: '20px', color: '#ffffff', textAlign: 'center' }}>
-              <h3 style={{ color: '#d4a017', fontSize: '20px', marginBottom: '4px' }}>{lightboxImage.title}</h3>
-              <p style={{ color: '#fff8e8', fontSize: '14px' }}>{lightboxImage.caption}</p>
+              <h3 style={{ color: '#B49A54', fontSize: '20px', marginBottom: '4px' }}>{lightboxImage.title}</h3>
+              <p style={{ color: '#FFFDF8', fontSize: '14px' }}>{lightboxImage.caption}</p>
             </div>
           </div>
         </div>
